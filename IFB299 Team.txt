@@ -1,0 +1,8 @@
+IFB299 Team 4 (Perfectly Unbalanced)
+
+Team Members
+
+Matthew Blundell (n9907971) Information Systems Major (Product Owner)
+Jacob Coorey - Computer Science Major (Developer)
+Abul-Hussein Osman - Computer Science Major (Developer)
+Luke Daniels - Computer Science Major (Scrum Master)
