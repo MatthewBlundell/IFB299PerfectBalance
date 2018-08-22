@@ -3,7 +3,7 @@ Create database backend;
 
 //Create table for Users and their constraints
 create table User
-userID int(16) IDENTITY(1,1) PRIMARY KEY,
+userID int(16) AUTO_INCREMENT PRIMARY KEY,
 name varchar(40),
 phone varchar(12),
 address varchar(255), 
@@ -17,7 +17,7 @@ CONSTRAINT PK_User PRIMARY KEY (userID)
 
 //Create table for stores and their constraints
 create table Store
-storeID int(8) IDENTITY(1,1) PRIMARY KEY,
+storeID int(8) AUTO_INCREMENT PRIMARY KEY,
 name varchar(255), 
 address varchar(255), 
 phone varchar(12), 
@@ -27,7 +27,7 @@ CONSTRAINT PK_Store PRIMARY KEY (storeID)
 
 //Create table for Vehicles and their constraints
 create table Vehicle
-carID int(16) IDENTITY(1,1) PRIMARY KEY, 
+carID int(16) AUTO_INCREMENT PRIMARY KEY,
 storeID int(8), FOREIGN KEY REFERENCES Store(storeID),
 carMake varchar(255), 
 model varchar(255), 
@@ -46,15 +46,14 @@ carWheelBase varchar(10),
 
 //Create table for Orders and their constraints
 create table Order
-orderID int(16) IDENTITY(1,1) PRIMARY KEY,
+orderID int(16) AUTO_INCREMENT PRIMARY KEY,
 userID int(16) FOREIGN KEY REFERENCES User(userID),
 carID int(16) FOREIGN KEY REFERENCES Vehicle(carID),
 createDate varchar(10), 
-pickupDate(10), 
-pickupStore(8), 
-returnDate(10), 
-returnStore(8), 
-CONSTRAINT PK_Order PRIMARY KEY (userID)
+pickupDate varchar(10), 
+pickupStore varchar(8), 
+returnDate varchar(10), 
+returnStore varchar(8), 
 
 
 
