@@ -1,0 +1,61 @@
+//create database for the tables to be stored
+Create database backend;
+
+//Create table for Users and their constraints
+create table User
+userID int(16) IDENTITY(1,1) PRIMARY KEY,
+name varchar(40),
+phone varchar(12),
+address varchar(255), 
+birthday varchar(10),
+occupation varchar(255),
+gender ENUM ('M', 'F'),
+username varchar(20),
+password varchar(20),
+autenticationLevel int(1), 
+CONSTRAINT PK_User PRIMARY KEY (userID)
+
+//Create table for stores and their constraints
+create table Store
+storeID int(8) IDENTITY(1,1) PRIMARY KEY,
+name varchar(255), 
+address varchar(255), 
+phone varchar(12), 
+city varchar(255), 
+state varchar(100),
+CONSTRAINT PK_Store PRIMARY KEY (storeID)
+
+//Create table for Vehicles and their constraints
+create table Vehicle
+carID int(16) IDENTITY(1,1) PRIMARY KEY, 
+storeID int(8), FOREIGN KEY REFERENCES Store(storeID),
+carMake varchar(255), 
+model varchar(255), 
+series varchar(255), 
+year int(4), 
+price int(20), 
+engineSize varchar(20), 
+fuelSystem varchar(255), 
+tankCapacity varchar(60), 
+carPower varchar(20), 
+seatingCapacity int(6), 
+standardTransmission varchar(20), 
+carBodyType varchar(20), 
+carDriveType varchar(20), 
+carWheelBase varchar(10),
+
+//Create table for Orders and their constraints
+create table Order
+orderID int(16) IDENTITY(1,1) PRIMARY KEY,
+userID(16) FOREIGN KEY REFERENCES User(userID),
+carID(16) FOREIGN KEY REFERENCES Vehicle(carID),
+createDate varchar(10), 
+pickupDate(10), 
+pickupStore(8), 
+returnDate(10), 
+returnStore(8), 
+CONSTRAINT PK_Order PRIMARY KEY (userID)
+
+
+
+
