@@ -47,8 +47,8 @@ carWheelBase varchar(10),
 //Create table for Orders and their constraints
 create table Order
 orderID int(16) IDENTITY(1,1) PRIMARY KEY,
-userID(16) FOREIGN KEY REFERENCES User(userID),
-carID(16) FOREIGN KEY REFERENCES Vehicle(carID),
+userID int(16) FOREIGN KEY REFERENCES User(userID),
+carID int(16) FOREIGN KEY REFERENCES Vehicle(carID),
 createDate varchar(10), 
 pickupDate(10), 
 pickupStore(8), 
