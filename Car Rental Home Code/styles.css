@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i');
+
+html, body{
+    background-color: #DCDCDC;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    padding-left: 50px;
+    padding-top: 50px;
+}
+
+span{
+    color: #FF4600;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 45px;
+}
+
+h1{
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.search{
+    position: absolute;
+    right: 5%;
+    top: 8%;
+    transform: translate(-5%, -9%);
+    background-color: #2F3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.search:hover > .search-txt{
+    width: 240px;
+    padding: 0 6px;
+}
+
+.search:hover > .search-btn{
+    background: white;
+}
+
+.search-btn{
+    color: #E84118;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2F3640;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.search-txt{
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0;
+}
+
+#sidebar{
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: #151719;
+    left: -250px;
+}
+
+#sidebar.active{
+    left: 0px;
+}
+
+#sidebar ul{
+    padding: 0;
+}
+
+#sidebar ul li{
+    color: rgba(230,230,230,0.9);
+    list-style: none;
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba(100,100,100,0.3);
+}
+
+#sidebar .toggle-btn{
+    position: absolute;
+    left: 265px;
+    top: 0;
+    cursor: pointer;
+}
+
+#sidebar .toggle-btn .menuline{
+    display: block;
+    width: 30px;
+    height: 5px;
+    background: #151719;
+    margin: 5px 0;
+}
+
+#slider{
+    width: 1280px;
+    height: 720px;
+    overflow: hidden;
+    margin: auto;
+    padding-top: 3%;
+    border-radius: 2%;
+}
+
+#slider .slides{
+    display: block;
+    width: 10000px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+    border-radius: 2%;
+}
+
+.slides img{
+    width: 1280px;
+    height: 720px;
+}
+
+#slider .slide{
+    float: left;
+    list-style-type: none;
+    width: 1280px;
+    height: 720px;
+}
+
+#footer{
+    background-color: #2F3640;
+    height: 80px;
+    text-align: center;
+}
+
+#footer h3{
+    color: white;
+    padding-top: 30px;;
+}
