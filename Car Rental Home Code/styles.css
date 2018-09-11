@@ -5,6 +5,11 @@ html, body{
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+body{
+  display: flex;
+  flex-direction: column;
 }
 
 .header{
@@ -23,7 +28,9 @@ h1{
     font-weight: 400;
     font-size: 25px;
 }
-
+.container{
+  flex: 1 0 auto;
+}
 .search{
     position: absolute;
     right: 5%;
@@ -51,7 +58,7 @@ h1{
     height: 40px;
     border-radius: 50%;
     background-color: #2F3640;
-    display: flex;  
+    display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.4s;
@@ -138,13 +145,15 @@ h1{
     height: 720px;
 }
 
-#footer{
+.footer{
     background-color: #2F3640;
     height: 80px;
+    flex-shrink: 0;
     text-align: center;
 }
 
-#footer h3{
+.footer h3{
     color: white;
     padding-top: 30px;;
+    margin-bottom: 0;
 }
