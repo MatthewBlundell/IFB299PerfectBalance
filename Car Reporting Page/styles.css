@@ -181,6 +181,7 @@ ul#features_list li{
     float: center;
     width: 98%;
     border: solid black 2px;
+    overflow-y:scroll;
 }
 
 #wrapper { 
