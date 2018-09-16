@@ -44,26 +44,83 @@
     
    
     <div class="container" style="padding-top:3%;"">
+
     <div class="row">
-        <div class="column" style="background-color:red; height:400px;">
-            
-            first column
-
-
-        </div> 
-        <div class="column" style="background-color:blue; height:400px;">
-            
+        <div class="wrapper">
+        <div class="column1" style="height:400px;">
+            <div id = "heading">
+                HEADING TITLE 
+             </div>
             second column
 
 
         </div> 
-        <div class="column" style="background-color:green; height:400px;">
-            
+        <div class="column1" style="height:400px;">
+            <div id = "heading">
+                HEADING TITLE 
+             </div>
             third column
     
     
         </div> 
+    </div>
     </div> 
+    <div class="row">
+        <div class="column2" style="height:400px;">
+            <div id = "heading">
+               HEADING TITLE
+            </div>
+            
+            <table id="Rented" style="width:100%">
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Age</th>
+                </tr>
+                <tr>
+                  <td>Jill</td>
+                  <td>Smith</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <td>Eve</td>
+                  <td>Jackson</td>
+                  <td>94</td>
+                </tr>
+              </table> 
+            <!--
+                <?php
+            $server = mysql_connect("127.0.0.1", "root", "Password"); 
+            $db = mysql_select_db("backend", $server); 
+            $query = mysql_query("##ENTER CORRECT QUERY HERE##"); 
+            ?>
+
+         <table>
+            <tr>
+                <th>AuftragsID</th>
+                <th>Startort</th>
+                <th>Zielort</th>
+                <th>Gewicht</th>
+                <th>Fracht</th>
+            </tr>
+
+            <?php
+               while ($row = mysql_fetch_array($query)) {?>
+                   <tr>
+                   <td><?php echo $row['AuftragsID'];?></td>
+                   <td><?php echo $row['Startort'];?></td>
+                   <td><?php echo $row['Zielort'];?></td>
+                   <td><?php echo $row['Gewicht'];?></td>
+                   <td><?php echo $row['Fracht'];?></td>
+                   </tr>
+              <?php  } ?>
+
+        </table>
+
+
+            -->
+        </div> 
+    </div>
 	</div>
 
     
