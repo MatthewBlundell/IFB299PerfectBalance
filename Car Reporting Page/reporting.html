@@ -8,10 +8,14 @@
     <link rel = "stylesheet" type = "text/css" href = "styles.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<script src="Chart.bundle.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type = "text/javascript" src = "main.js"></script>
 </head>
 <body>
+
+
+
     <div id = "sidebar">
         <nav>
             <div class = "toggle-btn" onclick = "toggleSidebar()">
@@ -47,20 +51,97 @@
 
     <div class="row">
         <div class="wrapper">
-        <div class="column1" style="height:400px;">
+        <div class="column1" style="height:400px">
             <div id = "heading">
-                HEADING TITLE 
+                <h3>Weekly Rentals</h3> 
              </div>
-            second column
-
-
+			<canvas id="Weekly" style="height:100%"></canvas>
+			<script>
+			var ctx = document.getElementById("Weekly");
+			var myLineChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+        labels: ["Monday", "Tuesday", "Wednesday", "thursday", "friday", "Saturday", "Sunday"],
+        datasets: [{
+            label: 'Number of rentals',
+            data: [2, 4, 5, 0, 1, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+			</script>
+			
+			
         </div> 
         <div class="column1" style="height:400px;">
-            <div id = "heading">
-                HEADING TITLE 
+            <div id = "heading"">
+                <h3>Monthly Rentals</h3> 
              </div>
-            third column
-    
+            			<canvas id="Monthly" style="height:100%"></canvas>
+			<script>
+			var ctx = document.getElementById("Monthly");
+			var myLineChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+        labels: ["First Week", "Second Week", "Third Week", "Fourth Week"],
+        datasets: [{
+            label: 'Number of rentals',
+            data: [2, 4, 5, 0],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+			</script>
     
         </div> 
     </div>
@@ -68,16 +149,9 @@
     <div class="row">
         <div class="column2" style="height:400px;">
             <div id = "heading">
-               HEADING TITLE
+               <h3>Current Rentals</h3>
             </div>
             
-            
-
-            <?php
-            $server = mysql_connect("127.0.0.1:3306", "root", "Password"); 
-            $db = mysql_select_db("backend", $server); 
-            $query = mysql_query("SELECT DISTINCT v.carID, v.carMake, v.model, u.name, o.returnDate FROM backend.vehicle v, backend.user u, backend.order o WHERE v.carID = o.carID AND u.userID = o.userID;"); 
-            ?>
 
          <table id="Rented" style="width:100%">
             <tr>
@@ -85,21 +159,15 @@
                 <th>Make</th>
                 <th>Model</th>
                 <th>Rented By</th>
-                <th>Due Date</th>
+                <th>Rent Date</th>
             </tr>
-
-            <?php
-               while ($row = mysql_fetch_array($query)) {?>
-                   <tr>
-                   <td><?php echo $row['VehicleID'];?></td>
-                   <td><?php echo $row['Make'];?></td>
-                   <td><?php echo $row['Model'];?></td>
-                   <td><?php echo $row['Rented By'];?></td>
-                   <td><?php echo $row['Due Date'];?></td>
-
-                   </tr>
-              <?php  
-            } ?>
+			<tr>
+				<td>Example ID</td>
+				<td>Example Make</td>
+				<td>Example Rented</td>
+				<td>Example Rented By</td>
+				<td>Example Rent Date</td>
+			</tr>
 
         </table>
         </div> 

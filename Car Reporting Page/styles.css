@@ -13,7 +13,7 @@ html, body{
     padding-left: 50px;
     padding-top: 50px;
     margin-bottom: 5px;
-    border-bottom: 2px solid #E84118
+    border-bottom: 2px solid #E84118;
 }
 
 span{
@@ -211,6 +211,8 @@ ul#features_list li{
     background-color: #2F3640;
     height: 30px;
     text-align: center;
+	position: relative;
+	top: -19px
 }
 
 #heading h3{
@@ -225,7 +227,7 @@ ul#features_list li{
 
 #footer h3{
     color: white;
-    padding-top: 30px;;
+    padding-top: 30px;
 }
 
 table#Rented tr:nth-child(even) {
