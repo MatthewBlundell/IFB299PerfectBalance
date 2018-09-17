@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i');
-
+/*
+    HOME PAGE/DEFAULT STYLING 
+*/
 html, body{
     background-color: #DCDCDC;
     font-family: 'Montserrat', sans-serif;
@@ -148,3 +150,178 @@ h1{
     color: white;
     padding-top: 30px;;
 }
+
+/*
+    REPORTING PAGE SPECIFIC
+*/
+#heading{
+    background-color: #2F3640;
+    height: 30px;
+    text-align: center;
+	position: relative;
+	top: -19px
+}
+
+#heading h3{
+    color: white;
+}
+
+table#Rented tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table#Rented tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+table#Rented th {
+    color: white;
+    background-color: black;
+}
+
+.column1 {
+    float: left;
+    width: 48%;
+    border: solid black 2px;
+    margin: 6px;
+}
+
+.column2 {
+    float: center;
+    width: 98%;
+    border: solid black 2px;
+    overflow-y:scroll;
+}
+
+#wrapper { 
+    width: 1280px;
+    margin:100px auto ;
+ }
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*
+    CAR SELECTION
+*/
+
+h4{
+	font-weight: 400;
+	font-size: 30px;
+}
+
+h5{
+	
+	font-size: 18px;
+}
+
+.container{
+    flex: 1 0 auto;
+    margin: 0 auto;
+    width: 90%;
+    padding-left: 40px;
+}
+
+#datePU{
+    position: relative;
+    left: 150px;
+    top: -800px;
+}
+
+#dateR{
+    position: relative;
+    left: 400px;
+    top: -1075px;
+}
+
+.button{
+	background-color: #2F3640;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 25px;
+	cursor: pointer;
+
+}
+
+.select{
+    width: 150px;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+ul#features_list li{
+	display: inline-flex;
+}
+
+#image{
+	position: relative;
+	left: 800px;
+    overflow: hidden;
+    margin: auto;
+    padding-top: 3%;
+    border-radius: 2%;
+}
+
+#car_info{
+    position: relative;
+    left: 1200px;
+    top: -300px;
+}
+
+#car_features{
+	position: relative;
+	left: 800px;
+	top: -300px;
+}
+
+#buttons{
+	position: relative;
+	left: 200px;
+	top: -950px;
+}
+
+#total{
+	position: relative;
+	left: 130px;
+	top: -1000px;
+	width: 450px;
+	height: 30px;
+	background-color: #2F3640;
+	padding: 1px;
+	text-align: center;
+	color: white;
+}
+
+/*
+    SEARCH PAGE
+*/
+
+#userProfile{
+    margin: 15px 0 0px 0px;
+    width: 75%;
+    max-width: 1200px;
+    border-radius: 0 0 60px 0;
+    height: 180px;
+    border: 1.5px solid black;
+    padding: 20px;
+    background-color: #f3f3f3;
+  }
+
+  .leftProfile{
+    width: 50%;
+    float: left;
+  }
+  .rightProfile{
+    width: 50%;
+    float: right;
+  }
