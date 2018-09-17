@@ -1,0 +1,129 @@
+
+
+#SearchWrapper {
+	margin-top:3%;
+	margin-left:5%;
+	width:90%;
+	height:15em;
+}
+
+#SearchBar {
+	margin-left:2px;
+	width:50%;
+	height:40%;
+	display:inline-block;
+	border-style: solid;
+	border-width:2px;
+}
+
+#DateStart {
+	margin-left:0.6%;
+	margin-right:0.6%;
+	display:inline-block;
+	width:15%;
+	height:40%;
+	border-style: solid;
+	border-width:2px;
+}
+#DateEnd {
+	display:inline-block;
+	margin-left:0px;
+	margin-right:0px;
+	width:15%;
+	height:40%;
+	border-style: solid;
+	border-width:2px;
+}
+
+#SearchButton {
+	float:right;
+	height:95%;
+	width:14.5%;
+	border-style: solid;
+	border-width:2px;
+}
+
+#Filters {
+	margin-top:1em;
+	width:81.3%;
+	height:47%;
+	padding-right:8px;
+	border-style: solid;
+	border-width:2px;
+}
+
+#ResultWrapper {
+	margin-top:3%;
+	margin-bottom:3%;
+	margin-left:10%;
+	width:80%;
+	height:auto;
+}
+
+.Result {
+	border-style: solid;
+	border-width:2px;
+	margin-bottom:1%;
+	width:100%;
+	height:10em;
+}
+
+.Picture {
+	display: inline-block;
+	margin-right:1%;
+	margin-top:1%;
+	margin-left:1%;
+	border-style:solid;
+	border-width:1px;
+	height:85%;
+	width:15%;
+	background-color:white;
+}
+
+.TextWrapper {
+	vertical-align:top;
+	margin-top:1%;
+	display: inline-block;
+	width:81%;
+	height:85%;
+	padding-top:1px;
+	padding-bottom:1px;
+	background-color:white;
+}
+
+.BoxWrapper {
+	vertical-align:top;
+	display: inline-block;
+	background-color:blue;
+	margin:1%;
+	margin-top:2%;
+	height:auto;
+	width:40%;
+}
+
+.Textbox {
+	width:auto;
+	height:15%;
+	margin:1%;
+	background-color:pink;
+}
+
+#ButtonCar {
+	width:10%;
+	height:70%;
+	display: inline-block;
+	margin:1%;
+	margin-left:2%;
+	margin-top:2%;
+	border-style:solid;
+	border-width:2px;
+	text-align:center;
+	text-decoration: none;
+}
+
+#ButtonCarText {
+	color:pink;
+	position:relative;
+	top:-0.7em;
+	margin-top:50%;
+}
