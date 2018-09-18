@@ -123,6 +123,7 @@ ul#features_list li{
     height: 100%;
     background: #151719;
     left: -250px;
+    z-index: 1;
 }
 
 #sidebar.active{
