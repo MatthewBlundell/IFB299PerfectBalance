@@ -41,20 +41,8 @@ h5{
 .container{
     flex: 1 0 auto;
     margin: 0 auto;
-    width: 90%;
-    padding-left: 40px;
-}
-
-#datePU{
-    position: relative;
-    left: 150px;
-    top: -800px;
-}
-
-#dateR{
-    position: relative;
-    left: 400px;
-    top: -1075px;
+    width: 100%;
+    
 }
 
 .button{
@@ -193,6 +181,17 @@ ul#features_list li{
 	top: -300px;
 }
 
+#datePU{
+    position: relative;
+    left: 150px;
+    top: -800px;
+}
+
+#dateR{
+    position: relative;
+    left: 400px;
+    top: -1075px;
+}
 #buttons{
 	position: relative;
 	left: 200px;
@@ -219,5 +218,7 @@ ul#features_list li{
 
 #footer h3{
     color: white;
-    padding-top: 30px;;
+    padding-top: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
