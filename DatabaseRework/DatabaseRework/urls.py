@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include
+from django.conf.urls import include, re_path
 from . import views
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
-    path('search/', include('Search.urls'))
+    re_path(r'^[Rr][Ee][Pp][oO][Rr][tT][Ii][Nn][Gg]/', include('Reporting.urls')),
+    re_path(r'^[Cc][Aa][Rr][_][Ii][Nn][Ff][Oo][Rr][Mm][Aa][Tt][Ii][Oo][Nn]/', include('CarInformation.urls')),
+    re_path(r'^[Ss][Ee][Aa][Rr][Cc][Hh]/', include('SearchResults.urls')),
+    re_path(r'^[Pp][Rr][Oo][Ff][Ii][Ll][Ee]/', include('CustomerInformation.urls')),
 ]

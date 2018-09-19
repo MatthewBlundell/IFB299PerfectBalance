@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFB299 Group 4 Car Rental App</title>
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type = "text/javascript" src = "{% static 'main.js' %}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+<div id = "sidebar">
+            <nav>
+                <div class = "toggle-btn" onclick = "toggleSidebar()">
+                    <span class = "menuline"></span>
+                    <span class = "menuline"></span>
+                    <span class = "menuline"></span>
+                </div>
+                <ul>
+					<li><a href="../../" style="color:inherit; text-decoration: none;">Home</a></li>
+					<li><a href ="../../Reporting" style="color: inherit; text-decoration: none;">Reporting</a></li>
+					<li><a href="../../Search" style="color:inherit; text-decoration: none;">Search Results</a></li>
+                </ul>
+            </nav>
+        </div>
+                <div class = "header">
+            <h1><span>C</span>ar <span>R</span>ental <span>C</span>ompany</h1>
+
+            <form class = "search" action="/Search/">
+              <input class = "search-txt" type = "text" name = "SearchField" placeholder = "Type to search..">
+              <button class = "search-btn" type="submit" value="">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+        <div class = "container">
+        
+        <div class ="Body">
+        <div id = "userProfile">
+          <div class = "leftProfile">
+            <ul>
+              <li>Full Name: <i>{{Name}}</i></li>
+              <li>Birthday: <i>{{Birthday}}</i></li>
+              <li>Residential Address: <i>{{Address}}</i> </li>
+            </ul>
+          </div>
+          <div class = "rightProfile">
+            <ul>
+              <li>Contact Number: <i>{{Number}}</i> </li>
+              <li>Rental Total: <i>{{Count}}</i> </li>
+              <li>TO BE CONTINUED... </li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Rental History</h2>
+		{% for vehicle in Vehicles %}
+        <div id = "ResultWrapper">
+    		<div class = "Result">
+    			<div class="Picture">
+    			</div>
+    			<div class="TextWrapper">
+    				<div class="BoxWrapper">
+					<div class="Textbox">{{vehicle.model}}</div>
+					<div class="Textbox">{{vehicle.carmake}}</div>
+					<div class="Textbox">{{vehicle.series}}</div>
+					<div class="Textbox">{{vehicle.year}}</div>
+    				</div>
+            <div class="BoxWrapper">
+    					<div class="Textbox">Pickup Date</div>
+    					<div class="Textbox">Return Date</div>
+    					<div class="Textbox">Price</div>
+    					<div class="Textbox">Rental Number</div>
+    				</div>
+    			</div>
+    		</div>
+
+
+
+    		</div>
+			{% endfor %}
+      </div>
+    </div>
+    <footer class = "footer">
+        <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
+    </footer>
+
+
+</body>
+</html>

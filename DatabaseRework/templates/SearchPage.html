@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFB299 Group 4 Car Rental App</title>
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type = "text/javascript" src = "{% static 'main.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'searchStyle.css' %}">
+</head>
+<body>
+
+        <div class = "header">
+            <h1><span>C</span>ar <span>R</span>ental <span>C</span>ompany</h1>
+
+
+          </div>
+
+        <div id = "sidebar" style="z-index:1;">
+            <nav>
+                <div class = "toggle-btn" onclick = "toggleSidebar()">
+                    <span class = "menuline"></span>
+                    <span class = "menuline"></span>
+                    <span class = "menuline"></span>
+                </div>
+                <ul>
+                <li><a href="../../" style="color:inherit; text-decoration: none;">Home</a></li>
+				<li><a href ="../../Reporting" style="color: inherit; text-decoration: none;">Reporting</a></li>
+				<li><a href="../../Search" style="color:inherit; text-decoration: none;">Search Results</a></li>
+                </ul>
+            </nav>
+        </div>
+		
+		<div id = "SearchWrapper">
+		     <form action="../Search/">
+			<div id = "SearchBar">
+				<input id="SearchBarTextInput" name = "SearchField"placeholder="Search. . ." value="{{Search}}"></input>
+			</div>
+			
+			<div id = "DateStart">
+				<input id="SearchBarTextInput" placeholder="DD/MM/YYYY"></input>
+			</div>
+			
+			<div id = "DateEnd">
+				<input id="SearchBarTextInput" placeholder="DD/MM/YYYY"></input>
+			</div>
+			
+			<button id = "SearchButton" type="submit" value="">
+				<div id = "SearchButtonText">Search Button</div>
+			</button>
+			</form>
+			
+			<div id = "Filters">
+				<div class = "BoxFilters">
+					<div class = "TitleBox">
+						<div class="FilterTitle">Seats</div>
+					</div>
+					<div class="TextBox">
+						<div class="FilterText">4 Seats<input type="checkbox"></input></div>
+						<div class="FilterText">5 Seats<input type="checkbox"></input></div>
+						<div class="FilterText">6 Seats<input type="checkbox"></input></div>
+						<div class="FilterText">7 Seats<input type="checkbox"></input></div>
+					</div>
+				</div>
+				
+				<div class = "BoxFilters">
+					<div class = "TitleBox">
+						<div class="FilterTitle">Make</div>
+					</div>
+					<div class="TextBox">
+						<div class="FilterText">BMW<input type="checkbox"></input></div>
+						<div class="FilterText">Land Rover<input type="checkbox"></input></div>
+						<div class="FilterText">Mazda<input type="checkbox"></input></div>
+						<div class="FilterText" style="font-size:10pt; width:7.7em;">Volkswagen<input type="checkbox" style="position:relative; top:0.06em;"></input></div>
+					</div>
+					<div class="TextBox">
+						<div class="FilterText">BMW<input type="checkbox"></input></div>
+						<div class="FilterText">Land<input type="checkbox"></input></div>
+						<div class="FilterText">Mazda<input type="checkbox"></input></div>
+						<div class="FilterText">Volk<input type="checkbox"></input></div>
+					</div>
+				</div>
+				
+				<div class = "BoxFilters">
+					<div class = "TitleBox">
+						<div class="FilterTitle" style="top:0.7em;">Price Range</div>						
+					</div>
+					<div class="TextBox">
+						<input type="number" style="width:100px; height:1em; float:left; position:relative; top: 32%; margin-left:0.5em;"></input>
+					</div>
+					<div class="TextBox">
+						<input type="number" style="width:100px; height:1em; float:left; position:relative; top: 32%; margin-left:0.5em;"></input>
+					</div>
+				</div>
+
+			</div>
+			
+		</div>
+		
+		<div id = "ResultWrapper">
+		{% for vehicle in VehicleList %}
+		<div class = "Result">
+			<div class="Picture">
+			</div>
+			<div class="TextWrapper">
+				<div class="BoxWrapper">
+					<div class="Textbox">{{vehicle.model}}</div>
+					<div class="Textbox">{{vehicle.carmake}}</div>
+					<div class="Textbox">{{vehicle.series}}</div>
+					<div class="Textbox">{{vehicle.year}}</div>
+				</div>
+				<div class="BoxWrapper">
+					<div class="Textbox">Car</div>
+					<div class="Textbox">Make</div>
+					<div class="Textbox">Model</div>
+					<div class="Textbox">Year</div>
+				</div>
+				<a href="" id="ButtonCar"><div id="ButtonCarText">View Car</div></a>
+			</div>
+		</div>
+		{% endfor %}
+		
+		</div>
+
+
+    <footer class = "footer">
+        <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
+    </footer>
+
+</body>
+</html>

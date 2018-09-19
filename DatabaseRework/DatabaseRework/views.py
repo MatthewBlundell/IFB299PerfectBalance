@@ -1,10 +1,16 @@
 from django.http import HttpResponse
+from django.template import loader
 from django.shortcuts import render
+from Search.models import Order, Vehicle, User
 # Create your views here.
 
-def index(request):
-    return render(request,'index.html')
+def home(request):
+    template = loader.get_template('home.html')
+    context = {}
 
-    #return HttpResponse("<p><b>Login details for <a href=\"/admin/\">/admin/</b></a></p>"
-     #                   "<p><b>Username:</b> admin</p>"
-      #                  "<p><b>Password:</b> password</p>")
+    return HttpResponse(template.render(context, request))
+
+
+
+
+

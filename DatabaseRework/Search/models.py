@@ -6,15 +6,16 @@ class Order(models.Model):
     carid = models.ForeignKey('Vehicle', models.DO_NOTHING, db_column='carID', blank=True, null=True)  # Field name made lowercase.
     createdate = models.CharField(db_column='createDate', max_length=10, blank=True, null=True)  # Field name made lowercase.
     pickupdate = models.CharField(db_column='pickupDate', max_length=10, blank=True, null=True)  # Field name made lowercase.
-    pickupstore = models.CharField(db_column='pickupStore', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    pickupstore = models.ForeignKey('Store', models.DO_NOTHING, db_column='pickupStore', blank=True, null=True, related_name = 'store_pickup')  # Field name made lowercase.
     returndate = models.CharField(db_column='returnDate', max_length=10, blank=True, null=True)  # Field name made lowercase.
-    returnstore = models.CharField(db_column='returnStore', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    returnstore = models.ForeignKey('Store', models.DO_NOTHING, db_column='returnStore', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'order'
+
     def __str__(self):
-        return self.orderid
+        return str(self.orderid)
 
 class Store(models.Model):
     storeid = models.AutoField(db_column='storeID', primary_key=True)  # Field name made lowercase.
@@ -28,7 +29,7 @@ class Store(models.Model):
         managed = False
         db_table = 'store'
     def __str__(self):
-        return self.storeid
+        return str(self.storeid)
 
 
 class User(models.Model):
@@ -48,7 +49,7 @@ class User(models.Model):
         db_table = 'user'
 
     def __str__(self):
-        return self.userid
+        return str(self.userid)
 
 
 class Vehicle(models.Model):
@@ -74,4 +75,4 @@ class Vehicle(models.Model):
         db_table = 'vehicle'
 
     def __str__(self):
-        return self.carid
+        return str(self.carid)
