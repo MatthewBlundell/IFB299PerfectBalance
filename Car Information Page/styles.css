@@ -162,56 +162,54 @@ ul#features_list li{
 }
 
 #image{
-	position: relative;
+	position: absolute;
 	left: 800px;
-    overflow: hidden;
-    margin: auto;
-    padding-top: 3%;
-    border-radius: 2%;*/
+    top: 175px;
 }
 
 #car_info{
-    position: relative;
+    position: absolute;
     left: 1200px;
-    top: -300px;
+    top: 125px;
 }
 
 #car_features{
-	position: relative;
-	left: 800px;
-	top: -300px;
+	position: absolute;
+	left: 825px;
+	top: 425px;
 }
 
 #datePU{
-    position: relative;
+    position: absolute;
     left: 150px;
-    top: -800px;
+    top:  175px;
 }
 
 #dateR{
-    position: relative;
+    position: absolute;
     left: 400px;
-    top: -1075px;
+    top:  175px;
 }
+
 #buttons{
-	position: relative;
+	position: absolute;
 	left: 200px;
-	top: -950px;
+	top:  600px;
 }
 
 #total{
-	position: relative;
-	left: 130px;
-	top: -1000px;
-	width: 450px;
-	height: 30px;
+	position: absolute;
+	left: 290px;
+	top:  500px;
 	background-color: #2F3640;
-	padding: 1px;
-	text-align: center;
+	padding: 20px;
 	color: white;
 }
 
 #footer{
+    position: absolute;
+    width: 100%;
+    top: 100%;
     background-color: #2F3640;
     height: 80px;
     text-align: center;
