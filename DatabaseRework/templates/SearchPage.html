@@ -21,7 +21,7 @@
 
           </div>
 
-        <div id = "sidebar" style="z-index:1;">
+        <div id = "sidebar" style="z-index:1">
             <nav>
                 <div class = "toggle-btn" onclick = "toggleSidebar()">
                     <span class = "menuline"></span>
@@ -29,77 +29,86 @@
                     <span class = "menuline"></span>
                 </div>
                 <ul>
-                <li><a href="../../" style="color:inherit; text-decoration: none;">Home</a></li>
-				<li><a href ="../../Reporting" style="color: inherit; text-decoration: none;">Reporting</a></li>
-				<li><a href="../../Search" style="color:inherit; text-decoration: none;">Search Results</a></li>
+                    <li>Home</li>
+                    <li>Car Information</li>
+                    <li>Customer Profile</li>
+                    <li>Reporting</li>
+                    <li>Search Results</li>
                 </ul>
             </nav>
         </div>
 		
 		<form id = "SearchWrapper" action="../Search/">
-			<div id = "SearchBar">
-				<input id="SearchBarTextInput" name = "SearchField"placeholder="Search. . ." value="{{Search}}"></input>
-			</div>
-			
-			<div id = "DateStart">
-				<input id="SearchBarTextInput" placeholder="DD/MM/YYYY"></input>
-			</div>
-			
-			<div id = "DateEnd">
-				<input id="SearchBarTextInput" placeholder="DD/MM/YYYY"></input>
-			</div>
-			
-			<button id = "SearchButton" type="submit" value="">
-				<div id = "SearchButtonText">Search Button</div>
-			</button>
-			
-			<div id = "Filters">
-				<div class = "BoxFilters">
-					<div class = "TitleBox">
-						<div class="FilterTitle">Seats</div>
-					</div>
-					<div class="TextBox">
-						<div class="FilterText">4 Seats<input type="checkbox"></input></div>
-						<div class="FilterText">5 Seats<input type="checkbox"></input></div>
-						<div class="FilterText">6 Seats<input type="checkbox"></input></div>
-						<div class="FilterText">7 Seats<input type="checkbox"></input></div>
-					</div>
-				</div>
+			<span style="height: 100%; width: 85.1%; display: inline-block; vertical-align: top">
+				<span id = "SearchBar">
+					<input name="SearchField" placeholder="Search. . ." value="{{Search}}"></input>
+				</span>
 				
-				<div class = "BoxFilters">
-					<div class = "TitleBox">
-						<div class="FilterTitle">Make</div>
-					</div>
-					<div class="TextBox">
-						<div class="FilterText">BMW<input type="checkbox"></input></div>
-						<div class="FilterText">Land Rover<input type="checkbox"></input></div>
-						<div class="FilterText">Mazda<input type="checkbox"></input></div>
-						<div class="FilterText" style="font-size:10pt; width:7.7em;">Volkswagen<input type="checkbox" style="position:relative; top:0.06em;"></input></div>
-					</div>
-					<div class="TextBox">
-						<div class="FilterText">BMW<input type="checkbox"></input></div>
-						<div class="FilterText">Land<input type="checkbox"></input></div>
-						<div class="FilterText">Mazda<input type="checkbox"></input></div>
-						<div class="FilterText">Volk<input type="checkbox"></input></div>
-					</div>
-				</div>
+				<span id = "DateStart">
+					<input type="date" name="StartDate" placeholder=""></input>
+				</span>
 				
-				<div class = "BoxFilters">
-					<div class = "TitleBox">
-						<div class="FilterTitle" style="top:0.7em;">Price Range</div>						
-					</div>
-					<div class="TextBox">
-						<input type="number" style="width:100px; height:1em; float:left; position:relative; top: 32%; margin-left:0.5em;"></input>
-					</div>
-					<div class="TextBox">
-						<input type="number" style="width:100px; height:1em; float:left; position:relative; top: 32%; margin-left:0.5em;"></input>
-					</div>
+				<span id = "DateEnd">
+					<input type='date' name="EndDate" placeholder=""></input>
+				</span>
+				<div id = "Filters">
+					<span class = "BoxFilters">
+						<span class = "TitleBox">
+							<div class="FilterTitle">Brand</div>
+						</span>
+	
+						<span class="TextBox" style="position:relative; left:4%;">
+							<div class="TextArea">BMW</div><input type="checkbox" name="BMW"></input>
+							<div class="TextArea"style="font-size:10pt;">Volkswagen</div><input type="checkbox" name="Volks" style="top: 0.5em;"></input>
+							<div class="TextArea" style="font-size:9pt;">Mercedes-Benz</div><input type="checkbox" name="Benz" style="top: 1em;"></input>
+							<div class="TextArea">Mazda</div><input type="checkbox" name="Mazda"></input>
+						</span>
+						<span class="TextBox" style="position:relative; left:4%;">
+							<div class="TextArea">Datsun</div><input type="checkbox" name="Datsun"></input>
+							<div class="TextArea" style="font-size:10pt;">Alfa Romeo</div><input type="checkbox" name="Alfa" style="top: 1em;"></input>
+							<div class="TextArea">Volvo</div><input type="checkbox" name="Volvo"></input>
+							<div class="TextArea">Renault</div><input type="checkbox" name="Renault"></input>
+						</span>
+					</span>
+					
+					<span class = "BoxFilters" style="position:relative; left:2%;">
+						<span class = "TitleBox">
+							<div class="FilterTitle">Body</div>
+						</span>
+						<span class="TextBox">
+							<div class="TextArea2">4D Wagon</div><input type="checkbox" name="4DWagon"></input>
+							<div class="TextArea2">3D Hardback</div><input type="checkbox" name="3DHardback"></input>
+							<div class="TextArea2">2D Hardtop</div><input type="checkbox" name="2DHardtop"></input>
+							<div class="TextArea2">2D Convertible</div><input type="checkbox" name="2DConvert" style="top:0.6em;"></input>
+						</span>
+						<span class="TextBox">
+							<div class="TextArea2">3D Hatchback</div><input type="checkbox" name="3DHatch" style="top:0.6em;"></input>
+							<div class="TextArea2">4D Sedan</div><input type="checkbox" name="4DSedan"></input>
+							<div class="TextArea2">2D Coupe</div><input type="checkbox" name="2DCoupe"></input>
+						</span>
+					</span>
+					
+					<span class = "BoxFilters">
+						<span class = "TitleBox">
+							<div class="FilterTitle">Price</div>
+						</span>
+						<span class="TextBox" style="width:5em;">
+							<div id = "NumberWrapper">
+								<div class="NumberText">Minimum Amount:</div><input type="number" name="Min"></input>
+								<div class="NumberText">Maximum Amount:</div><input type="number" name="Max"></input>
+							</div>
+						</span>
+					</span>
+					
 				</div>
-
-			</div>
 			
+			</span>
+			<span id = "buttonwrapper">
+				<button id = "SearchButton">
+					<div id = "SearchButtonText">Search</div>
+				</button>
+			</span>			
 		</form>
-		
 		<div id = "ResultWrapper">
 		{% for vehicle in VehicleList %}
 		<div class = "Result">
@@ -113,22 +122,21 @@
 					<div class="Textbox">{{vehicle.year}}</div>
 				</div>
 				<div class="BoxWrapper">
-					<div class="Textbox">Car</div>
-					<div class="Textbox">Make</div>
-					<div class="Textbox">Model</div>
-					<div class="Textbox">Year</div>
+					<div class="Textbox">{{vehicle.price}}</div>
+					<div class="Textbox">{{vehicle.fuelsystem}}</div>
+					<div class="Textbox">{{vehicle.carpower}}</div>
+					<div class="Textbox">{{vehicle.seatingcapacity}}</div>
 				</div>
-				<a href="" id="ButtonCar"><div id="ButtonCarText">View Car</div></a>
+				<a href="../Car_Information/{{vehicle.carid}}" id="ButtonCar"><div id="ButtonCarText">View Car</div></a>
 			</div>
 		</div>
 		{% endfor %}
-		
 		</div>
 
 
     <footer class = "footer">
         <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
     </footer>
-
+	
 </body>
 </html>
