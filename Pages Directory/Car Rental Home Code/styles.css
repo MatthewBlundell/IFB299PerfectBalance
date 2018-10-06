@@ -18,7 +18,47 @@ body{
     margin-bottom: 5px;
     border-bottom: 2px solid #E84118;
 }
+#SearchWrapper {
+	vertical-align:top;
+	margin-top:3%;
+	margin-left:5%;
+	width:90%;
+	height:12em;
 
+}
+#SearchButton {
+	height: calc(40% - 2px);
+	width: 30%;
+	border-style: solid;
+	border-width:2px;
+	border-color: #646464;
+	text-align: center;
+	text-decoration: none;
+	color: #646464;
+	background-color: #f3f3f3;
+}
+#SearchWrapper span {}
+
+#SearchBar {
+	width:66%;
+	height: calc(40% - 2px);
+	display: inline-block;
+	vertical-align: top;
+	border-style: solid;
+	border-width:2px;
+	border-color: #646464;
+
+}
+
+#SearchBar input {
+	height:98%;
+	width:100%;
+	background-color: #DCDCDC;
+	border: none;
+	font-family: 'Montserrat', sans-serif;
+	font-size:24pt;
+	background-color: #f3f3f3;
+}
 span{
     color: #FF4600;
     font-style: italic;
