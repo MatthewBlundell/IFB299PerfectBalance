@@ -2,11 +2,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from Search.models import Order, Vehicle, User
 from django.shortcuts import redirect
+from datetime import datetime
 
 # Create your views here.
 
 def Report(request,datereport):
-    week1 = ["20070207", "20070220", "20070221", '20070222', '20070223', '20070224', '20070225']
     week1counts = []
     monthlength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     monthcounts = []
@@ -63,6 +63,7 @@ def Report(request,datereport):
         vehicles.append(Vehicle.objects.get(carid=i.carid_uint))
         people.append(User.objects.get(userid=i.userid_uint))
 
+
     together = zip(vehicles, people, ordersmonth)
 
     template = loader.get_template('reporting.html')
@@ -86,10 +87,12 @@ def Report(request,datereport):
 def Reportenter(request):
 
     datesarray = Order.objects.order_by('pickupdate')
-    
+    pickupdatearray = []
     for i in range(len(datesarray)):
-        print(datesarray[i].pickupdate)
+        pickupdatearray.append(datesarray[i].pickupdate)
 
-    latestdate = "20070207"
+    yearmonth = pickupdatearray[-1]
+
+    latestdate = yearmonth[0:6] + "01"
 
     return redirect(Report,latestdate)
