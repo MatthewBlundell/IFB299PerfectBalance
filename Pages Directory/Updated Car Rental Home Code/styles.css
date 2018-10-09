@@ -13,6 +13,14 @@ html, body{
     margin: 50px;
 }
 
+.wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFEF;
+    opacity: 0;
+}
+
 /* Header Styles */
 
 .header{
@@ -55,7 +63,7 @@ button a{
 .loginbtn{
     outline: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px;    
 }
 
 .signupbtn{
@@ -169,6 +177,84 @@ ol li a:hover .name .navname{
     transform: translateY(20px);
 }
 
+/*Login Form Styles */
+
+.arrow{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #FF3B3F;
+    right: 61px;
+    top: 59px;
+    display: none;
+}
+
+.login-form{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    background: #000;
+    color: #fff;
+    right: 11px;
+    top: 76px;
+    z-index: 1;
+    border-radius: 5px;
+    display: none;
+}
+
+.login-form > form{
+    width: 250px;
+    margin: 25px auto;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+}
+
+.login-form > form > div > label{
+    font-weight: bold;
+}
+
+.loginLabel{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid darkgrey;
+    outline: none;
+    margin-bottom: 20px;
+    background: transparent;
+    color: #FF3B3F;
+}
+
+.login-form > form > div > button {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #FF3B3F;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.login-form > form > div > button:hover {
+    background: #fff;
+    color: #FF3B3F;
+}
+
+.login-form > form > div > a {
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 60px;
+    color: darkgrey;
+}
+
+.login-form > form > div > a:hover{
+    color: #FF3B3F;
+}
+
 /* Search Bar Styles */
 
 .search{
@@ -274,157 +360,3 @@ ol li a:hover .name .navname{
     color: #FF3B3F;
     padding-top: 30px;;
 }
-/*
-.header{
-    padding-left: 50px;
-    padding-top: 50px;
-}
-
-span{
-    color: #FF4600;
-    font-style: italic;
-    font-weight: 900;
-    font-size: 45px;
-}
-
-h1{
-    font-weight: 400;
-    font-size: 25px;
-}
-
-.login {
-    position: absolute;
-    right: 10%;
-    top: 10%;
-}
-
-.signup {
-    position: absolute;
-    right: 13%;
-    top: 10%;
-}
-
-.search{
-    position: absolute;
-    right: 5%;
-    top: 8%;
-    transform: translate(-5%, -9%);
-    background-color: #2F3640;
-    height: 40px;
-    border-radius: 40px;
-    padding: 10px;
-}
-
-.search:hover > .search-txt{
-    width: 240px;
-    padding: 0 6px;
-}
-
-.search:hover > .search-btn{
-    background: white;
-}
-
-.search-btn{
-    color: #E84118;
-    float: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #2F3640;
-    display: flex;  
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-}
-
-.search-txt{
-    border: none;
-    background: none;
-    outline: none;
-    float: left;
-    padding: 0;
-    color: white;
-    font-size: 16px;
-    transition: 0.4s;
-    line-height: 40px;
-    width: 0;
-}
-
-#sidebar{
-    position: fixed;
-    width: 250px;
-    height: 100%;
-    background: #151719;
-    left: -250px;
-}
-
-#sidebar.active{
-    left: 0px;
-}
-
-#sidebar ul{
-    padding: 0;
-}
-
-#sidebar ul li{
-    color: rgba(230,230,230,0.9);
-    list-style: none;
-    padding: 25px 20px;
-    border-bottom: 1px solid rgba(100,100,100,0.3);
-}
-
-#sidebar .toggle-btn{
-    position: absolute;
-    left: 265px;
-    top: 0;
-    cursor: pointer;
-}
-
-#sidebar .toggle-btn .menuline{
-    display: block;
-    width: 30px;
-    height: 5px;
-    background: #151719;
-    margin: 5px 0;
-}
-
-#slider{
-    width: 1280px;
-    height: 720px;
-    overflow: hidden;
-    margin: auto;
-    padding-top: 3%;
-    border-radius: 2%;
-}
-
-#slider .slides{
-    display: block;
-    width: 10000px;
-    height: 400px;
-    margin: 0;
-    padding: 0;
-    border-radius: 2%;
-}
-
-.slides img{
-    width: 1280px;
-    height: 720px;
-}
-
-#slider .slide{
-    float: left;
-    list-style-type: none;
-    width: 1280px;
-    height: 720px;
-}
-
-#footer{
-    background-color: #2F3640;
-    height: 80px;
-    text-align: center;
-}
-
-#footer h3{
-    color: white;
-    padding-top: 30px;;
-}*/
