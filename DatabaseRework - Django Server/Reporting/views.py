@@ -1,18 +1,18 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from Search.models import Order, Vehicle, User
-
+from django.shortcuts import redirect
 
 # Create your views here.
 
-def Report(request):
+def Report(request,datereport):
     week1 = ["20070207", "20070220", "20070221", '20070222', '20070223', '20070224', '20070225']
     week1counts = []
     monthlength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     monthcounts = []
-    year = week1[0][0:4]
-    month = week1[0][4:6]
-    day = week1[0][6:8]
+    year = datereport[0:4]
+    month = datereport[4:6]
+    day = datereport[6:8]
 
     ordersmonth = []
     ordersweek = []
@@ -83,4 +83,14 @@ def Report(request):
 
     return HttpResponse(template.render(context, request))
 
+def Reportenter(request):
 
+    datesarray = []
+    datesarray.append(Order.objects.order_by('pickupdate'))
+    
+    for i in range(len(datesarray)):
+        print(datesarray[i].pickupDate)
+
+    latestdate = "20070207"
+
+    return redirect(Report,latestdate)
