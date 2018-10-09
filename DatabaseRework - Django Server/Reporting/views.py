@@ -85,11 +85,10 @@ def Report(request,datereport):
 
 def Reportenter(request):
 
-    datesarray = []
-    datesarray.append(Order.objects.order_by('pickupdate'))
+    datesarray = Order.objects.order_by('pickupdate')
     
     for i in range(len(datesarray)):
-        print(datesarray[i].pickupDate)
+        print(datesarray[i].pickupdate)
 
     latestdate = "20070207"
 
