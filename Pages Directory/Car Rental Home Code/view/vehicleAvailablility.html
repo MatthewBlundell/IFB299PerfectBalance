@@ -45,7 +45,7 @@
           <form id = "SearchWrapper" action="../Search/">
             <span style="height: 100%; width: 65%; display: inline-block; vertical-align: top">
               <span id = "SearchBar">
-                <input name="SearchField" placeholder="Search. . ." value=""></input>
+                <input name="SearchField" placeholder="Search. . ." value="{{search}}"></input>
               </span>
               <span id = "buttonwrapper">
                 <button id = "SearchButton">
@@ -54,9 +54,18 @@
               </span>
             </form>
 
-            <table>
-              
-            </table>
+            <div id = "vehicleResults">
+        		{% for vehicle in VehicleList %}
+        			<div class="singleResult">
+        					<div class="carResult">{{vehicle.model}}</div>
+        					<div class="carResult">{{vehicle.carmake}}</div>
+        					<div class="carResult">{{vehicle.series}}</div>
+        					<div class="carResult">{{vehicle.year}}</div>
+        					<div class="carResult">{{vehicle.price}}</div>
+        				<a href="../Car_Information/{{vehicle.carid}}"> <div class= "carURL"> View Car</div></a>
+        		</div>
+        		{% endfor %}
+        		</div>
           </div>
 
     </div>
