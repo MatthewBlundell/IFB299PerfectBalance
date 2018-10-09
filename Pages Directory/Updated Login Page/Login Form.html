@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFB299 Group 4 Car Rental App</title>
+    <link rel = "stylesheet" type = "text/css" href = "styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type = "text/javascript" src = "main.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+    <div class = "header">
+        <button class = "loginbtn"><a href = "#"><i class="fas fa-sign-in-alt"></i>    Login</a></button>
+        <button class = "signupbtn"><a href = "#"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+        <h1 class = "compname"><span class = "logotitle">C</span>ar <span class = "logotitle">R</span>ental <span class = "logotitle">C</span>ompany</h1>
+    </div>
+    <div class = "container">
+        <div id = "sidebar">
+            <nav>
+                <ol>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-car"></i>
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Car Information">Car Information</span></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-user-circle"></i>
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-file-invoice"></i>
+                                <i class="fas fa-file-invoice"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Reporting">Reporting</span></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-list"></i>
+                                <i class="fas fa-list"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+                        </a>
+                    </li>
+                    <div class = "search">
+                        <input type = "text" class = "input" placeholder = "Type Search here">
+                        <input type = "button" value = "Search" class = "close-btn">
+                    </div>
+                </ol>
+            </nav>
+        </div>  
+        <div class ="maincon">
+          <div class = "login">
+            <div class = "loginL">
+                <img src = "images/avatar.png" class = "avatar" alt = "picture of a user login icon">
+                <h3>Login</h3>
+                <label>Email:</label><input class = "loginLabel" type="text" placeholder="Enter Email" required></br>
+                <label>Password:</label> <input class = "loginLabel" type="password" placeholder="Enter Password" required></br>
+                <button>Login</button></br>
+                <a href = "#">Lost your password?</a>
+            </div>
+            <div class = "loginR">
+                <img src = "images/signup.png" class = "siavatar" alt = "picture of a user signup icon">
+                <h3>Register</h3>
+                <label>Email:</label><input  class = "loginLabel"type="text" placeholder="Enter Email" required></br>
+                <label>Repeat Email:</label><input  class = "loginLabel"type="text" placeholder="Enter Email" required></br>
+                <label>Password:</label><input class = "loginLabel" type="password" placeholder="Enter Password" required></br>
+                <label>Repeat Password:</label><input class = "loginLabel" type="password" placeholder="Enter Password" required></br>
+                <button>Register</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id = "footer">
+        <h4>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h4>
+    </div>
+
+</body>
+</html>
