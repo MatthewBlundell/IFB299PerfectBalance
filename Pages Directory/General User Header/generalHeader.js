@@ -12,6 +12,23 @@ $(function(){
     var status =  false;
     var disable = $(".wrapper");
     
+    $(".submit").click(function(event){
+        event.preventDefault();
+        if(status == false){
+            arrow.fadeIn();
+            form.fadeIn();
+            form.css({'z-index': '3', 'opacity': '1'});
+            disable.css({'z-index': '2', 'opacity': '0.6'});           
+            status = true;
+        }
+        else{
+            arrow.fadeOut();
+            form.fadeOut();
+            form.css({'z-index': '0', 'opacity': '1'});
+            disable.css({'z-index': '0', 'opacity': '0'}); 
+            status = false;
+        }
+    })
 
     $(".loginbtn").click(function(event){
         event.preventDefault();
