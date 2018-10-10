@@ -17,6 +17,8 @@
 
 
 
+
+
     <div id = "sidebar"  style="z-index:1;">
         <nav>
             <div class = "toggle-btn" onclick = "toggleSidebar()">
@@ -42,17 +44,53 @@
             </form>
           </div>
 
+          <script type="text/javascript">
+              function searchSel()
+              {
+                var input1 = document.getElementById("Month");
+                var mntSel = input1.options[input1.selectedIndex].value;
+
+                var input1 = document.getElementById("Year");
+                var yrSel = input1.options[input1.selectedIndex].value;
+
+                url = "../" + mntSel + yrSel + "01";
+              }
+          </script>
 
 
-    
-   
+          <select name="Month">
+              <option value="-">MONTH</option>
+              <option value="01">January</option>
+              <option value="02">February</option>
+              <option value="03">March</option>
+              <option value="04">April</option>
+              <option value="05">May</option>
+              <option value="06">June</option>
+              <option value="07">July</option>
+              <option value="08">August</option>
+              <option value="09">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+          </select>
+
+          <select name="Year">
+
+              <option value="-">YEAR</option>
+              {% for years in comboYear %}
+              <option value="{{ years }}">{{ years }}</option>
+              {% endfor %}
+          </select>
+
+          <input type="button" value="GO" onclick="this.href= url" />
+
     <div class="container" style="padding-top:3%;">
 
     <div class="row">
         <div class="wrapper">
         <div class="column1" style="height:400px">
             <div id = "heading">
-                <h3>Weekly Rentals</h3> 
+                <h3>Weekly Rentals</h3>
              </div>
 			<canvas id="Weekly" style="height:100%"></canvas>
 			<script>
@@ -94,12 +132,14 @@
     }
 });
 			</script>
-			
-			
-        </div> 
+
+
+        </div>
+
+
         <div class="column1" style="height:400px;">
             <div id = "heading"">
-                <h3>Monthly Rentals</h3> 
+                <h3>Monthly Rentals</h3>
              </div>
             			<canvas id="Monthly" style="height:100%"></canvas>
 			<script>
@@ -141,16 +181,16 @@
     }
 });
 			</script>
-    
-        </div> 
+
+        </div>
     </div>
-    </div> 
+    </div>
     <div class="row">
         <div class="column2" style="height:400px;">
             <div id = "heading">
                <h3>Rental Information</h3>
             </div>
-            
+
 
          <table id="Rented" style="width:100%">
             <tr>
@@ -171,14 +211,14 @@
 			{% endfor %}
 
         </table>
-        </div> 
+        </div>
     </div>
 	</div>
 
-    
+
     <div id = "footer">
         <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
     </div>
-   
+
 </body>
 </html>

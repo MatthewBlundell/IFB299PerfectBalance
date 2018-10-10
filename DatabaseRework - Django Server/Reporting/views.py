@@ -66,8 +66,24 @@ def Report(request,datereport):
 
     together = zip(vehicles, people, ordersmonth)
 
+
+    comboYear = []
+    yearFinder = Order.objects.order_by('pickupdate')
+
+    for i in range(len(yearFinder)):
+        yearNum =yearFinder[i].pickupdate
+        yearNum = yearNum[0:4]
+        yearNum = int(yearNum)
+
+        comboYear.append(yearNum)
+
+    comboYear = set(comboYear)
+
+
+
     template = loader.get_template('reporting.html')
     context = {
+        'comboYear': comboYear,
         'together': together,
         'day': week1counts[0],
         'day2': week1counts[1],
