@@ -4,13 +4,19 @@
 
 #SearchWrapper {
 	vertical-align:top;
-	margin-top:3%;
+
 	margin-left:5%;
 	width:90%;
-	height:12em;
+	height:10em;
 
 }
+.titleWrapper{
+	margin-top:3%;
+	vertical-align:bottom;
+	margin-left:5%;
+	width:78%
 
+}
 #SearchWrapper span {}
 
 #SearchBar {
@@ -20,6 +26,7 @@
 	vertical-align: top;
 	border-style: solid;
 	border-width:2px;
+	border-radius: 20px 0px 0px 0px;
 	border-color: #646464;
 
 }
@@ -27,6 +34,9 @@
 #SearchBar input {
 	height:98%;
 	width:100%;
+	top:-2.5%;
+	border-radius: 20px 0px 0px 0px;
+	position: relative;
 	background-color: #DCDCDC;
 	border: none;
 	font-family: 'Montserrat', sans-serif;
@@ -48,9 +58,7 @@
 #DateStart input {
 	position:relative;
 	left:5%;
-	height:calc(90% - 2px);
 	width:calc(94% - 2px);
-	top:5%;
 	background-color: #f3f3f3;
 	border: none;
 	font-family: 'Montserrat', sans-serif;
@@ -72,9 +80,7 @@
 #DateEnd input {
 	position:relative;
 	left:5%;
-	height:calc(90% - 2px);
 	width:calc(94% - 2px);
-	top:5%;
 	background-color: #f3f3f3;
 	border: none;
 	font-family: 'Montserrat', sans-serif;
@@ -83,8 +89,8 @@
 
 #buttonwrapper {
 	display:inline-block;
-	vertical-align:top;
-	height:100%;
+	height:80%;
+	margin-top: 20px;
 	width:14.5%;
 }
 
@@ -93,15 +99,21 @@
 	width:100%;
 	border-style: solid;
 	border-width:2px;
-	border-color: #646464;
+	border-radius: 10px;
+	border-color: #FF4600;
 	text-align: center;
+	font-size: 30px;
+	font-weight: 600;
 	text-decoration: none;
 	color: #646464;
 	background-color: #f3f3f3;
+	cursor: pointer;
+
 }
 
 #Filters {
 	margin-top:4px;
+	border-radius: 0px 0px 0px 20px;
 	vertical-align:top;
 	background-color: #f3f3f3;
 	width:99%;
@@ -114,9 +126,9 @@
 .BoxFilters {
 	position: relative;
 	top:5%;
-	width:30%;
+	width:13%;
 	height:90%;
-	margin-left:2.5%;	
+	margin-left:2.5%;
 	display: inline-block;
 	vertical-align:top;
 }
@@ -125,19 +137,28 @@
 	display:inline-block;
 	vertical-align:top;
 	position:relative;
-	width:25%;
+	width:30%;
 	height:100%;
 	color: black;
-	margin-right:2%;
 }
 
 .FilterTitle {
 	width: auto;
 	position: relative;
 	top: calc(50% - 0.6em);
-	font-size:21pt;
+	font-size:12pt;
+	font-weight: 500;
 }
-
+.searchTitle{
+	display:inline-block;
+	font-size:21pt;
+	width: 66%;
+}
+.dateTitle{
+	display:inline-block;
+	font-size:21pt;
+	width: 16%;
+}
 .TextBox {
 	display:inline-block;
 	vertical-align:top;
@@ -262,20 +283,17 @@
 
 #ButtonCar {
 	width:10%;
-	height:70%;
+	height:20%;
 	display: inline-block;
-	margin:1%;
-	margin-left:2%;
-	margin-top:2%;
-	border-style:solid;
-	border-width:2px;
+	margin-top: 50px;
+	background-color: #ffb294;
+	border-radius: 10%;
 	text-align:center;
 	text-decoration: none;
 	color: inherit;
 }
 
 #ButtonCarText {
-	position:relative;
+	margin-top: 5%;
 	top:-0.7em;
-	margin-top:50%;
 }
