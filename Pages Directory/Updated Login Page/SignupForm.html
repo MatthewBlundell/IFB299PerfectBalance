@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFB299 Group 4 Car Rental App</title>
+    <link rel = "stylesheet" type = "text/css" href = "styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type = "text/javascript" src = "main.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+    <div class = "header">
+        <button class = "loginbtn"><a href = "#"><i class="fas fa-sign-in-alt"></i>    Login</a></button>
+        <h1 class = "compname"><span class = "logotitle">C</span>ar <span class = "logotitle">R</span>ental <span class = "logotitle">C</span>ompany</h1>
+    </div>
+    <div class = "login-form">
+        <form>
+            <div>
+                <label>Email:</label><br>
+                <input class = "loginLabel" type = "text" placeholder = "Enter Email" required>
+            </div>
+            <div>
+                <label>Password:</label><br>
+                <input class = "loginLabel" type = "password" placeholder = "Enter Password" required>
+            </div>
+            <div>
+                <button class = "submit">Login</button>
+            </div>
+            <div>
+                <a href = "#">Lost your password?</a>
+            </div>
+        </form>        
+    </div>
+    <div class = "wrapper"></div>
+    <div class = "container">
+        <div id = "sidebar">
+            <nav>
+                <ol>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-car"></i>
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Car Information">Car Information</span></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-user-circle"></i>
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-file-invoice"></i>
+                                <i class="fas fa-file-invoice"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Reporting">Reporting</span></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "#">
+                            <div class = "icon">
+                                <i class="fas fa-list"></i>
+                                <i class="fas fa-list"></i>
+                            </div>
+                            <div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+                        </a>
+                    </li>
+                    <div class = "search">
+                        <input type = "text" class = "input" placeholder = "Type Search here">
+                        <input type = "button" value = "Search" class = "close-btn">
+                    </div>
+                </ol>
+            </nav>
+        </div>  
+        <div class ="maincon">
+          <div class = "login">
+            <div class = "loginR">
+                <h3>Register</h3>
+                <label>Name:</label><input  class = "loginLabel"type="text" placeholder="Enter Name" required></br>
+                <label>Phone Number:</label><input  class = "loginLabel"type="tel" placeholder="Enter Phone Number " required></br>
+                <label>Address:</label><input class = "loginLabel" type="text" placeholder="Enter Address" required></br>
+                <label>Date of Birth:</label><input class = "loginLabel" type="date" placeholder="--/--/----" required></br>
+                <label>Occupation:</label><input class = "loginLabel" type="text" placeholder="Enter your occupation here" required></br>
+                <label>Gender:</label><br><select name = "gender"><option value = "male">Male</option><option value = "female">Female</option><option value = "other">Other</option></select><br>
+                <label>Username:</label><input class = "loginLabel" type="text" placeholder="Enter a Username Here" required></br>
+                <label>Password:</label><input class = "loginLabel" type="password" placeholder="Enter a Password Here" required></br>
+                <label>Rewrite Password:</label><input class = "loginLabel" type="password" placeholder="Re-enter password" required></br>
+                <label>Email:</label><input class = "loginLabel" type="email" placeholder="Enter email" required></br>
+                <button class = "regbtn">Register</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id = "footer">
+        <h4>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h4>
+    </div>
+    
+
+</body>
+</html>
