@@ -6,58 +6,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IFB299 Group 4 Car Rental App</title>
-    <link rel = "stylesheet" type = "text/css" href = "{% static 'stylesReporting.css' %}">
+	<link rel = "stylesheet" type = "text/css" href = "{% static 'reportingStyle.css' %}">
+	{% if session == True and authlevel == 1 %}
+	<link rel = "stylesheet" type = "text/css" href = "{% static 'adminHeader.css' %}">
+	{% else %}
+	<link rel = "stylesheet" type = "text/css" href = "{% static 'generalHeader.css' %}">
+	{% endif %}
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<script src="{% static 'Chart.bundle.js' %}"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script type = "text/javascript" src = "{% static 'main.js' %}"></script>
+    <script type = "text/javascript" src = "{% static 'adminHeader.js' %}"></script>
 </head>
-<body>
-
-
-
-
-
-    <div id = "sidebar"  style="z-index:1;">
-        <nav>
-            <div class = "toggle-btn" onclick = "toggleSidebar()">
-                <span class = "menuline"></span>
-                <span class = "menuline"></span>
-                <span class = "menuline"></span>
-            </div>
-            <ul>
-                <li><a href="../../" style="color:inherit; text-decoration: none;">Home</a></li>
-                <li>Reporting</li>
-                <li><a href="../../Search" style="color:inherit; text-decoration: none;">Search Results</a></li>
-            </ul>
-        </nav>
+<body>    
+    <div class = "header">
+		{% if session == False %}
+        <button class = "loginbtn"><a href = ""><i class="fas fa-sign-in-alt"></i>    Login</a></button>
+        <button class = "signupbtn"><a href = "/Register/"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+		{% else %}
+		<div>
+		<div style="float:right; vertical-align:center; margin-right:3em; margin-top:0.5em;"><b>{{name}}</b></div>
+        <button style = "style:inline-block;"class = "signupbtn"><a href="/Logout/"><i class="fas fa-sign-in-alt"></i>    Logout</a></button>
+		</div>
+		{% endif %}
+        <h1 class = "compname"><span class = "logotitle">C</span>ar <span class = "logotitle">R</span>ental <span class = "logotitle">C</span>ompany</h1>
+        <div class = "arrow"></div>
     </div>
-           <div class = "header">
-            <h1><span>C</span>ar <span>R</span>ental <span>C</span>ompany</h1>
-
-            <form class = "search" action="/Search/">
-              <input class = "search-txt" type = "text" name = "SearchField" placeholder = "Type to search..">
-              <button class = "search-btn" type="submit" value="">
-                <i class="fas fa-search"></i>
-              </button>
+    <div class = "login-form">
+            <form action="/Login/" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+                <div>
+                    <label>Email:</label><br>
+                    <input class = "loginLabel" type="text" name="email" placeholder = "Enter Email" required>
+                </div>
+                <div>
+                    <label>Password:</label><br>
+                    <input class = "loginLabel" type="password" name="password" placeholder = "Enter Password" required>
+                </div>
+				<input type="hidden" name="action" value="login">
+                <div>
+                    <button type = "submit" class = "submit">Login</button>
+                </div>
+				{% if Check == True %}
+				<p style="color:#FF3B3F">Incorrect Login Details</p>
+				{% endif %}
+                <div>
+                    <a href = "">Lost your password?</a>
+                </div>
             </form>
-          </div>
-
-          <script type="text/javascript">
-              function searchSel()
-              {
-                var input1 = document.getElementById("Month");
-                var mntSel = input1.options[input1.selectedIndex].value;
-
-                var input1 = document.getElementById("Year");
-                var yrSel = input1.options[input1.selectedIndex].value;
-
-                url = "../" + mntSel + yrSel + "01";
-              }
-          </script>
-
-
+			
+        </div>
+		{% if session == True and authlevel == 1 %}
+                <div class = "container">
+                    <div id = "sidebar">
+                        <nav>
+                            <ol>
+                                <li>
+                                    <a href = "../../">
+                                        <div class = "icon">
+                                            <i class="fas fa-home"></i>
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Car_Information/15369">
+                                        <div class = "icon">
+                                            <i class="fas fa-car"></i>
+                                            <i class="fas fa-car"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Car Information">Car Information</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Profile/{{userid}}">
+                                        <div class = "icon">
+                                            <i class="fas fa-user-circle"></i>
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Reporting/">
+                                        <div class = "icon">
+                                            <i class="fas fa-file-invoice"></i>
+                                            <i class="fas fa-file-invoice"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Reporting">Reporting</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Search/">
+                                        <div class = "icon">
+                                            <i class="fas fa-list"></i>
+                                            <i class="fas fa-list"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+                                    </a>
+                                </li>
+								<form class = "search" action="/Search/">
+									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input type = "button" value = "Search" class = "close-btn">
+								</form>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+				{% else %}
+				    <div class = "container">
+					<div id = "sidebar">
+						<nav>
+							<ol>
+								<li>
+									<a href = "">
+										<div class = "icon">
+											<i class="fas fa-home"></i>
+											<i class="fas fa-home"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+									</a>
+								</li>
+								<li>
+									<a href = "/Profile/{{userid}}">
+										<div class = "icon">
+											<i class="fas fa-user-circle"></i>
+											<i class="fas fa-user-circle"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+									</a>
+								</li>
+								<li>
+									<a href = "/Search/">
+										<div class = "icon">
+											<i class="fas fa-list"></i>
+											<i class="fas fa-list"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+									</a>
+								</li>
+								<form class = "search" action="/Search/">
+									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input type = "button" value = "Search" class = "close-btn">
+								</form>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				{% endif %}
+				
+				
+		<form action="./Redirect/">
           <select name="Month">
               <option value="-">MONTH</option>
               <option value="01">January</option>
@@ -75,22 +176,23 @@
           </select>
 
           <select name="Year">
-
-              <option value="-">YEAR</option>
-              {% for years in comboYear %}
-              <option value="{{ years }}">{{ years }}</option>
-              {% endfor %}
+              <option value="-">YEAR</option>             
+              <option value="2005">2005</option>            
+              <option value="2006">2006</option>
+              <option value="2007">2007</option>             
           </select>
 
-          <input type="button" value="GO" onclick="this.href= url" />
-
-    <div class="container" style="padding-top:3%;">
+          <input type="submit" value="Submit"/>
+		  
+		 </form> 
+		 
+    <div class="GraphContainer" style="margin-bottom:3%;">
 
     <div class="row">
-        <div class="wrapper">
+        <div class="GraphWrapper">
         <div class="column1" style="height:400px">
             <div id = "heading">
-                <h3>Weekly Rentals</h3>
+                <h3>Weekly Rentals</h3> 
              </div>
 			<canvas id="Weekly" style="height:100%"></canvas>
 			<script>
@@ -132,14 +234,12 @@
     }
 });
 			</script>
-
-
-        </div>
-
-
+			
+			
+        </div> 
         <div class="column1" style="height:400px;">
             <div id = "heading"">
-                <h3>Monthly Rentals</h3>
+                <h3>Monthly Rentals</h3> 
              </div>
             			<canvas id="Monthly" style="height:100%"></canvas>
 			<script>
@@ -181,17 +281,16 @@
     }
 });
 			</script>
-
-        </div>
+    
+        </div> 
     </div>
-    </div>
+    </div> 
     <div class="row">
         <div class="column2" style="height:400px;">
             <div id = "heading">
-               <h3>Rental Information</h3>
+               <h3>Current Rentals</h3>
             </div>
-
-
+            
          <table id="Rented" style="width:100%">
             <tr>
                 <th>VehicleID</th>
@@ -211,14 +310,14 @@
 			{% endfor %}
 
         </table>
-        </div>
+        </div> 
     </div>
 	</div>
 
-
-    <div id = "footer">
+    
+    <div class = "footer">
         <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
     </div>
-
+   
 </body>
 </html>

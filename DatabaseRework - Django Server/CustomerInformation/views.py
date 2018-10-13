@@ -5,6 +5,29 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def InfoUser(request, profile):
+    Check = False
+    name = -1
+    userid = -1
+    auth = -1
+    if request.session.has_key('Login'):
+        Check = True
+        request.session.flush()
+
+    if request.session.has_key('email'):
+        uservar = User.objects.get(username=request.session['email'])
+        if uservar.authenticationlevel != 1:
+            if uservar.userid != profile:
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    if request.session.has_key('email'):
+        uservar = User.objects.get(username=request.session['email'])
+        name = uservar.name
+        userid = uservar.userid
+        auth = uservar.authenticationlevel
+
+
     person = get_object_or_404(User, userid=profile)
     vehiclelist = []
     count = 0
@@ -22,10 +45,15 @@ def InfoUser(request, profile):
         'Address': person.address,
         'Vehicles': vehiclelist,
         'Count': count,
+        'name': name,
+        'userid': userid,
+        'authlevel': auth,
+        'Check': Check,
+        'session': request.session.has_key('email'),
     }
 
     return HttpResponse(template.render(context, request))
 
 
 def home(request):
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'));
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

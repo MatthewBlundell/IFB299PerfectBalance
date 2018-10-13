@@ -2,17 +2,35 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from Search.models import Order, Vehicle, User
 from django.shortcuts import redirect
-from datetime import datetime
 
 # Create your views here.
 
-def Report(request,datereport):
+def Report(request, date):
+    Check = False
+    name = -1
+    userid = -1
+    auth = -1
+
+    if request.session.has_key('email'):
+        uservar = User.objects.get(username=request.session['email'])
+        name = uservar.name
+        userid = uservar.userid
+        auth = uservar.authenticationlevel
+
+    if request.session.has_key('email'):
+        uservar = User.objects.get(username=request.session['email'])
+        if uservar.authenticationlevel != 1:
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    week1 = ["20070207", "20070220", "20070221", '20070222', '20070223', '20070224', '20070225']
     week1counts = []
     monthlength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     monthcounts = []
-    year = datereport[0:4]
-    month = datereport[4:6]
-    day = datereport[6:8]
+    year = date[0:4]
+    month = date[4:6]
+    day = date[6:8]
 
     ordersmonth = []
     ordersweek = []
@@ -63,29 +81,12 @@ def Report(request,datereport):
         vehicles.append(Vehicle.objects.get(carid=i.carid_uint))
         people.append(User.objects.get(userid=i.userid_uint))
 
-
     together = zip(vehicles, people, ordersmonth)
-
-
-    comboYear = []
-    yearFinder = Order.objects.order_by('pickupdate')
-
-    for i in range(len(yearFinder)):
-        yearNum =yearFinder[i].pickupdate
-        yearNum = yearNum[0:4]
-        yearNum = int(yearNum)
-
-        comboYear.append(yearNum)
-
-    comboYear = set(comboYear)
-
-
 
     template = loader.get_template('reporting.html')
     context = {
-        'comboYear': comboYear,
         'together': together,
-        'day': week1counts[0],
+        'day1': week1counts[0],
         'day2': week1counts[1],
         'day3': week1counts[2],
         'day4': week1counts[3],
@@ -96,19 +97,28 @@ def Report(request,datereport):
         'week2total': week2total,
         'week3total': week3total,
         'week4total': week4total,
+        'name': name,
+        'userid': userid,
+        'authlevel': auth,
+        'Check': Check,
+        'session': request.session.has_key('email'),
     }
 
     return HttpResponse(template.render(context, request))
 
-def Reportenter(request):
-
+def ReportRedirect(request):
     datesarray = Order.objects.order_by('pickupdate')
-    pickupdatearray = []
-    for i in range(len(datesarray)):
-        pickupdatearray.append(datesarray[i].pickupdate)
 
-    yearmonth = pickupdatearray[-1]
+    yearmonth = datesarray[len(datesarray)-1].pickupdate
 
     latestdate = yearmonth[0:6] + "01"
 
-    return redirect(Report,latestdate)
+    return redirect('../Reporting/' + latestdate)
+
+def Redirect(request, date):
+    year = request.GET.get('Year')
+    month = request.GET.get('Month')
+    if(year == '-' or month == '-'):
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    return redirect('../../../Reporting/' + year+month+'01')

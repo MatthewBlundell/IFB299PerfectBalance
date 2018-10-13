@@ -6,58 +6,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IFB299 Group 4 Car Rental App</title>
-    <link rel = "stylesheet" type = "text/css" href = "{% static 'styles.css' %}">
+	{% if session == True and authlevel == 1 %}
+	<link rel = "stylesheet" type = "text/css" href = "{% static 'adminHeader.css' %}">
+	{% else %}
+	<link rel = "stylesheet" type = "text/css" href = "{% static 'generalHeader.css' %}">
+	{% endif %}
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'searchStyle.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script type = "text/javascript" src = "{% static 'main.js' %}"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'searchStyle.css' %}">
+	<script src = "{% static 'adminHeader.js' %}"></script>
+
 </head>
-<body>
-
-        <div class = "header">
-            <h1><span>C</span>ar <span>R</span>ental <span>C</span>ompany</h1>
-
-
-          </div>
-
-        <div id = "sidebar" style="z-index:1">
-            <nav>
-                <div class = "toggle-btn" onclick = "toggleSidebar()">
-                    <span class = "menuline"></span>
-                    <span class = "menuline"></span>
-                    <span class = "menuline"></span>
+<body>    
+    <div class = "header">
+		{% if session == False %}
+        <button class = "loginbtn"><a href = ""><i class="fas fa-sign-in-alt"></i>    Login</a></button>
+        <button class = "signupbtn"><a href = "/Register/"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+		{% else %}
+		<div>
+		<div style="float:right; vertical-align:center; margin-right:3em; margin-top:0.5em;"><b>{{name}}</b></div>
+        <button style = "style:inline-block;"class = "signupbtn"><a href="/Logout/"><i class="fas fa-sign-in-alt"></i>    Logout</a></button>
+		</div>
+		{% endif %}
+        <h1 class = "compname"><span class = "logotitle">C</span>ar <span class = "logotitle">R</span>ental <span class = "logotitle">C</span>ompany</h1>
+        <div class = "arrow"></div>
+    </div>
+    <div class = "login-form">
+            <form action="/Login/" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+                <div>
+                    <label>Email:</label><br>
+                    <input class = "loginLabel" type="text" name="email" placeholder = "Enter Email" required>
                 </div>
-                <ul>
-                    <li>Home</li>
-                    <li>Car Information</li>
-                    <li>Customer Profile</li>
-                    <li>Reporting</li>
-                    <li>Search Results</li>
-                </ul>
-            </nav>
+                <div>
+                    <label>Password:</label><br>
+                    <input class = "loginLabel" type="password" name="password" placeholder = "Enter Password" required>
+                </div>
+				<input type="hidden" name="action" value="login">
+                <div>
+                    <button type = "submit" class = "submit">Login</button>
+                </div>
+				{% if Check == True %}
+				<p style="color:#FF3B3F">Incorrect Login Details</p>
+				{% endif %}
+                <div>
+                    <a href = "">Lost your password?</a>
+                </div>
+            </form>
+			
         </div>
-		
+		{% if session == True and authlevel == 1 %}
+                <div class = "container">
+                    <div id = "sidebar">
+                        <nav>
+                            <ol>
+                                <li>
+                                    <a href = "../../">
+                                        <div class = "icon">
+                                            <i class="fas fa-home"></i>
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Car_Information/15369">
+                                        <div class = "icon">
+                                            <i class="fas fa-car"></i>
+                                            <i class="fas fa-car"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Car Information">Car Information</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Profile/{{userid}}">
+                                        <div class = "icon">
+                                            <i class="fas fa-user-circle"></i>
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Reporting/">
+                                        <div class = "icon">
+                                            <i class="fas fa-file-invoice"></i>
+                                            <i class="fas fa-file-invoice"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Reporting">Reporting</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Search/">
+                                        <div class = "icon">
+                                            <i class="fas fa-list"></i>
+                                            <i class="fas fa-list"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+                                    </a>
+                                </li>
+								<form class = "search" action="/Search/">
+									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input type = "button" value = "Search" class = "close-btn">
+								</form>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+				{% else %}
+				    <div class = "container">
+					<div id = "sidebar">
+						<nav>
+							<ol>
+								<li>
+									<a href = "">
+										<div class = "icon">
+											<i class="fas fa-home"></i>
+											<i class="fas fa-home"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+									</a>
+								</li>
+								<li>
+									<a href = "/Profile/{{userid}}">
+										<div class = "icon">
+											<i class="fas fa-user-circle"></i>
+											<i class="fas fa-user-circle"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+									</a>
+								</li>
+								<li>
+									<a href = "/Search/">
+										<div class = "icon">
+											<i class="fas fa-list"></i>
+											<i class="fas fa-list"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+									</a>
+								</li>
+								<form class = "search" action="/Search/">
+									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input type = "button" value = "Search" class = "close-btn">
+								</form>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				{% endif %}
+
+    <script src = "adminHeader.js"></script>
+        <div class= "titleWrapper">
+          <div class= "searchTitle">Key Word</div>
+          <div class= "dateTitle">Start Date</div>
+          <div class= "dateTitle">End Date</div>
+        </div>
 		<form id = "SearchWrapper" action="../Search/">
-			<span style="height: 100%; width: 85.1%; display: inline-block; vertical-align: top">
+			<span style="height: 100%; width: 85%; display: inline-block; vertical-align: top">
 				<span id = "SearchBar">
-					<input name="SearchField" placeholder="Search. . ." value="{{Search}}"></input>
+					<input name="SearchField" placeholder="Search. . ." value=""></input>
 				</span>
-				
 				<span id = "DateStart">
 					<input type="date" name="StartDate" placeholder=""></input>
 				</span>
-				
+
 				<span id = "DateEnd">
 					<input type='date' name="EndDate" placeholder=""></input>
 				</span>
 				<div id = "Filters">
 					<span class = "BoxFilters">
 						<span class = "TitleBox">
-							<div class="FilterTitle">Brand</div>
+							<div class="FilterTitle">Brand:</div>
 						</span>
-	
-						<span class="TextBox" style="position:relative; left:4%;">
+            <div class="TextBox" style="position:relative; left:4%;">
+              <select>
+                <option value="0">...</option>
+                <option value="1">BMW</option>
+                <option value="2">Volkswagen</option>
+                <option value="3">Mercedes-Benz</option>
+                <option value="4">Mazda</option>
+                <option value="5">Datsun</option>
+                <option value="6">Alfa Romeo</option>
+                <option value="7">Volvo</option>
+                <option value="8">Renault</option>
+              </select>
+            </div>
+						<!--<span class="TextBox" style="position:relative; left:4%;">
 							<div class="TextArea">BMW</div><input type="checkbox" name="BMW"></input>
 							<div class="TextArea"style="font-size:10pt;">Volkswagen</div><input type="checkbox" name="Volks" style="top: 0.5em;"></input>
 							<div class="TextArea" style="font-size:9pt;">Mercedes-Benz</div><input type="checkbox" name="Benz" style="top: 1em;"></input>
@@ -69,12 +205,27 @@
 							<div class="TextArea">Volvo</div><input type="checkbox" name="Volvo"></input>
 							<div class="TextArea">Renault</div><input type="checkbox" name="Renault"></input>
 						</span>
+          -->
 					</span>
-					
+
 					<span class = "BoxFilters" style="position:relative; left:2%;">
 						<span class = "TitleBox">
-							<div class="FilterTitle">Body</div>
+							<div class="FilterTitle">Body:</div>
 						</span>
+
+            <div class="TextBox" style="position:relative; left:4%;">
+              <select>
+                <option value="0">...</option>
+                <option value="1">4D Wagon</option>
+                <option value="2">3D Hardback</option>
+                <option value="3">2D Hardtop</option>
+                <option value="4">2D Hardtop</option>
+                <option value="5">3D Hatchback</option>
+                <option value="6">4D Sedan</option>
+                <option value="7">2D Coupe</option>
+              </select>
+            </div>
+            <!--
 						<span class="TextBox">
 							<div class="TextArea2">4D Wagon</div><input type="checkbox" name="4DWagon"></input>
 							<div class="TextArea2">3D Hardback</div><input type="checkbox" name="3DHardback"></input>
@@ -86,11 +237,44 @@
 							<div class="TextArea2">4D Sedan</div><input type="checkbox" name="4DSedan"></input>
 							<div class="TextArea2">2D Coupe</div><input type="checkbox" name="2DCoupe"></input>
 						</span>
+          -->
 					</span>
-					
-					<span class = "BoxFilters">
+
+          <span class = "BoxFilters" style="position:relative; left:2%;">
 						<span class = "TitleBox">
-							<div class="FilterTitle">Price</div>
+							<div class="FilterTitle">Seats:</div>
+						</span>
+
+            <div class="TextBox" style="position:relative; left:4%;">
+              <select>
+                <option value="0">...</option>
+                <option value="1">Two (2)</option>
+                <option value="2">Three (3)</option>
+                <option value="3">Four (4)</option>
+                <option value="4">Five (5)</option>
+                <option value="5">Six (6)</option>
+                <option value="5">Seven (7)</option>
+              </select>
+            </div>
+					</span>
+
+          <span class = "BoxFilters" style="position:relative; left:2%;">
+						<span class = "TitleBox">
+							<div class="FilterTitle">Fuel:</div>
+						</span>
+
+            <div class="TextBox" style="position:relative; left:4%;">
+              <select>
+                <option value="0">...</option>
+                <option value="1">Petrol</option>
+                <option value="2">Diesel</option>
+              </select>
+            </div>
+					</span>
+
+					<span class = "BoxFilters" style = "width:30%;">
+						<span class = "TitleBox" style="width:20%">
+							<div class="FilterTitle">Price:</div>
 						</span>
 						<span class="TextBox" style="width:5em;">
 							<div id = "NumberWrapper">
@@ -99,17 +283,18 @@
 							</div>
 						</span>
 					</span>
-					
+
 				</div>
-			
+
 			</span>
 			<span id = "buttonwrapper">
 				<button id = "SearchButton">
 					<div id = "SearchButtonText">Search</div>
 				</button>
-			</span>			
+			</span>
 		</form>
 		<div id = "ResultWrapper">
+		{% if count > 0%}
 		{% for vehicle in VehicleList %}
 		<div class = "Result">
 			<div class="Picture">
@@ -131,12 +316,20 @@
 			</div>
 		</div>
 		{% endfor %}
+		{% else %}
+		<p>No Results were found for this search</p>
+		{% endif %}
 		</div>
-
 
     <footer class = "footer">
         <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
     </footer>
-	
+
 </body>
 </html>
+
+{% if Check == True %}
+<script>
+$(BadLogin());
+</script>
+{% endif %}

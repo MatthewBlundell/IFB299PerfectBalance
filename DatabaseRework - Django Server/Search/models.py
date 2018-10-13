@@ -40,9 +40,10 @@ class User(models.Model):
     birthday = models.CharField(max_length=20, blank=True, null=True)
     occupation = models.CharField(max_length=255, blank=True, null=True)
     gender = models.CharField(max_length=1, blank=True, null=True)
-    username = models.CharField(max_length=20, blank=True, null=True)
-    password = models.CharField(max_length=20, blank=True, null=True)
+    username = models.CharField(max_length=255, blank=True, null=True)
+    password = models.CharField(max_length=255, blank=True, null=True)
     authenticationlevel = models.IntegerField(db_column='authenticationLevel', blank=True, null=True)  # Field name made lowercase.
+    sessionkey = models.CharField(db_column='SessionKey', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False

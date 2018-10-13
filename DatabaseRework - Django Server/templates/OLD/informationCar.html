@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFB299 Group 4 Car Rental App</title>
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'stylescarinfo.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type = "text/javascript" src = "{% static 'main.js' %}"></script>
+</head>
+<body>
+    <div id = "sidebar"  style="z-index:1;">
+        <nav>
+            <div class = "toggle-btn" onclick = "toggleSidebar()">
+                <span class = "menuline"></span>
+                <span class = "menuline"></span>
+                <span class = "menuline"></span>
+            </div>
+            <ul>
+                <li><a href="../../" style="color:inherit; text-decoration: none;">Home</a></li>
+				<li><a href ="../../Reporting" style="color: inherit; text-decoration: none;">Reporting</a></li>
+				<li><a href="../../Search" style="color:inherit; text-decoration: none;">Search Results</a></li>
+            </ul>
+        </nav>
+    </div>
+            <div class = "header">
+            <h1><span>C</span>ar <span>R</span>ental <span>C</span>ompany</h1>
+
+            <form class = "search" action="/Search/">
+              <input class = "search-txt" type = "text" name = "SearchField" placeholder = "Type to search..">
+              <button class = "search-btn" type="submit" value="">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+
+
+    <div id = "image">
+        <img src = "{% static 'images/audi.jpg' %}" alt="2019-audi-a7" width="350" height="250">
+
+    </div>
+
+    <div id="car_info">
+        <h4>{{carmake}}</h4>
+        <h4>{{Model}}</h4>
+        <h4>{{Year}}</h4>
+        <h4>{{Fuelsystem}}</h4>
+    </div>
+
+    <div id="car_features">
+        <h5><u>Features</u></h5>
+
+        <ul>
+            <li>{{Transmission}}</li>         
+            <li>Air Conditioning</li>               
+            <li>{{Seating}} Seats</li>                   
+            <li>Dual Airbag</li>
+            <li>Satellite Navigation</li>
+            <li>ABS</li>
+            <li>5.3L/100km</li>
+            <li>{{Carpower}}</li>
+        </ul>
+    </div>
+
+    <div class="container"></div>
+
+
+    <div id="datePU">
+        <form>
+            <label><h2>Pick-Up</h2></label><br>
+            <input class="select" type="date"/><br><br>
+
+            <select class="select">
+              <option value="Time">Time</option>
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+            </select><br><br>
+
+            <select class="select">
+            <option value="0">Location...</option>
+            <option value="1">Airport</option>
+            <option value="2">Southbank</option>
+            <option value="3">George Street</option>
+            <option value="4">West End</option>
+            <option value="5">Gold Coast</option>
+            <option value="6">Springwood</option>
+          </select>
+
+        </form>
+    </div>
+
+    <div id="dateR">
+        <form>
+            <label><h2>Return</h2></label><br>
+            <input class="select" type="date"/><br><br>
+
+            <select class="select">
+              <option value="Time">Time</option>
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+            </select><br><br>
+
+            <select class="select">
+            <option value="0">Location...</option>
+            <option value="1">Airport</option>
+            <option value="2">Southbank</option>
+            <option value="3">George Street</option>
+            <option value="4">West End</option>
+            <option value="5">Gold Coast</option>
+            <option value="6">Springwood</option>
+          </select>
+
+        </form>
+    </div>
+
+    <div id = "total">
+        <label>Total:</label>
+    </div>
+
+    <div id="buttons">
+        <button class="button">RENT</button>
+        <button class="button">SAVE</button>
+    </div>
+    
+    <div id = "footer">
+        <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
+    </div>
+   
+</body>
+</html>

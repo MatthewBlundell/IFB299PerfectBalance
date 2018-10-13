@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i');
+
+html, body{
+    background-color: #DCDCDC;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+h4{
+	font-weight: 400;
+	font-size: 30px;
+}
+
+h5{
+	font-size: 18px;
+}
+
+.CarContainer{
+    flex: 1 0 auto;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.button{
+	background-color: #2F3640;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 25px;
+	cursor: pointer;
+}
+
+.select{
+    width: 150px;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+#total{
+	margin-top:1em;
+}
+
+#car_features{
+	position:relative;
+	top:-4em;
+}
+
+#buttons button{
+	float: none;
+	margin-left:15%;
+}
+
+#total{
+	background-color: #2F3640;
+	padding: 20px;
+	color: white;
+	text-align:center;
+}

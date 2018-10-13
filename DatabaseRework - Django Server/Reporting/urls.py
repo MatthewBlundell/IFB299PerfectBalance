@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('<datereport>/', views.Report, name='Report'),
-    path('', views.Reportenter, name='Reportenter'),
+    path('<date>/Redirect/', views.Redirect, name='QuickRedirect'),
+    path('<date>/', views.Report, name='Report'),
+    path('', views.ReportRedirect, name='Reportenter'),
 ]

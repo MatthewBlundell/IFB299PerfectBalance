@@ -6,40 +6,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IFB299 Group 4 Car Rental App</title>
-    <link rel = "stylesheet" type = "text/css" href = "{% static 'styles.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'searchStyle.css' %}"
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'profileStyle.css' %}">
+	{% if session == True and authlevel == 1 %}
+	<link rel = "stylesheet" type = "text/css" href = "{% static 'adminHeader.css' %}">
+	{% else %}
+	<link rel = "stylesheet" type = "text/css" href = "{% static 'generalHeader.css' %}">
+	{% endif %}
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script type = "text/javascript" src = "{% static 'main.js' %}"></script>
+    <script type = "text/javascript" src = "{% static 'adminHeader.css' %}"></script>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
-<body>
-<div id = "sidebar">
-            <nav>
-                <div class = "toggle-btn" onclick = "toggleSidebar()">
-                    <span class = "menuline"></span>
-                    <span class = "menuline"></span>
-                    <span class = "menuline"></span>
+<body>    
+    <div class = "header">
+		{% if session == False %}
+        <button class = "loginbtn"><a href = ""><i class="fas fa-sign-in-alt"></i>    Login</a></button>
+        <button class = "signupbtn"><a href = "/Register/"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+		{% else %}
+		<div>
+		<div style="float:right; vertical-align:center; margin-right:3em; margin-top:0.5em;"><b>{{name}}</b></div>
+        <button style = "style:inline-block;"class = "signupbtn"><a href="/Logout/"><i class="fas fa-sign-in-alt"></i>    Logout</a></button>
+		</div>
+		{% endif %}
+        <h1 class = "compname"><span class = "logotitle">C</span>ar <span class = "logotitle">R</span>ental <span class = "logotitle">C</span>ompany</h1>
+        <div class = "arrow"></div>
+    </div>
+    <div class = "login-form">
+            <form action="/Login/" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+                <div>
+                    <label>Email:</label><br>
+                    <input class = "loginLabel" type="text" name="email" placeholder = "Enter Email" required>
                 </div>
-                <ul>
-					<li><a href="../../" style="color:inherit; text-decoration: none;">Home</a></li>
-					<li><a href ="../../Reporting" style="color: inherit; text-decoration: none;">Reporting</a></li>
-					<li><a href="../../Search" style="color:inherit; text-decoration: none;">Search Results</a></li>
-                </ul>
-            </nav>
-        </div>
-                <div class = "header">
-            <h1><span>C</span>ar <span>R</span>ental <span>C</span>ompany</h1>
-
-            <form class = "search" action="/Search/">
-              <input class = "search-txt" type = "text" name = "SearchField" placeholder = "Type to search..">
-              <button class = "search-btn" type="submit" value="">
-                <i class="fas fa-search"></i>
-              </button>
+                <div>
+                    <label>Password:</label><br>
+                    <input class = "loginLabel" type="password" name="password" placeholder = "Enter Password" required>
+                </div>
+				<input type="hidden" name="action" value="login">
+                <div>
+                    <button type = "submit" class = "submit">Login</button>
+                </div>
+                <div>
+                    <a href = "">Lost your password?</a>
+                </div>
             </form>
-          </div>
-        <div class = "container">
-        
+			
+        </div>
+		{% if session == True and authlevel == 1 %}
+                <div class = "container">
+                    <div id = "sidebar">
+                        <nav>
+                            <ol>
+                                <li>
+                                    <a href = "../../">
+                                        <div class = "icon">
+                                            <i class="fas fa-home"></i>
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Car_Information/15369">
+                                        <div class = "icon">
+                                            <i class="fas fa-car"></i>
+                                            <i class="fas fa-car"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Car Information">Car Information</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Profile/{{userid}}">
+                                        <div class = "icon">
+                                            <i class="fas fa-user-circle"></i>
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Reporting/">
+                                        <div class = "icon">
+                                            <i class="fas fa-file-invoice"></i>
+                                            <i class="fas fa-file-invoice"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Reporting">Reporting</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Search/">
+                                        <div class = "icon">
+                                            <i class="fas fa-list"></i>
+                                            <i class="fas fa-list"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+                                    </a>
+                                </li>
+								<form class = "search" action="/Search/">
+									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input type = "button" value = "Search" class = "close-btn">
+								</form>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+				{% else %}
+				    <div class = "container">
+					<div id = "sidebar">
+						<nav>
+							<ol>
+								<li>
+									<a href = "">
+										<div class = "icon">
+											<i class="fas fa-home"></i>
+											<i class="fas fa-home"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+									</a>
+								</li>
+								<li>
+									<a href = "/Profile/{{userid}}">
+										<div class = "icon">
+											<i class="fas fa-user-circle"></i>
+											<i class="fas fa-user-circle"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+									</a>
+								</li>
+								<li>
+									<a href = "/Search/">
+										<div class = "icon">
+											<i class="fas fa-list"></i>
+											<i class="fas fa-list"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+									</a>
+								</li>
+								<form class = "search" action="/Search/">
+									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input type = "button" value = "Search" class = "close-btn">
+								</form>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				{% endif %}
         <div class ="Body">
         <div id = "userProfile">
           <div class = "leftProfile">
@@ -59,6 +172,9 @@
         </div>
 
         <h2>Rental History</h2>
+
+
+		{% if Count > 0 %}
 		{% for vehicle in Vehicles %}
         <div id = "ResultWrapper">
     		<div class = "Result">
@@ -79,11 +195,13 @@
     				</div>
     			</div>
     		</div>
+    	</div>
+		{% endfor %}
+		{% else %}
+		</br>
+		<p>No Vehicles rented</p>
+		{% endif %}
 
-
-
-    		</div>
-			{% endfor %}
       </div>
     </div>
     <footer class = "footer">

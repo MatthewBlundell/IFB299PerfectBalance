@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i');
+
+/* Global Styles */
+
+html, body{
+    background-color: #DCDCDC;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.container{
+    margin-bottom: 200px;
+}
+
+.wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFEF;
+    opacity: 0;
+}
+
+/* Header Styles */
+
+.header{
+    background-color: #EFEFEF;
+    padding-top: 1.5rem;
+}
+
+.compname{
+    margin: 0;
+    font-weight: 700;
+    font-size: 25px;
+    padding-left: 1.5rem;
+    color: #A9A9A9;
+}
+
+.logotitle{
+    color: #FF3B3F;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 45px;
+}
+
+button{
+    float: right;
+    margin-left: 3%;
+    margin-bottom: 1%;
+}
+
+.loginbtn, .signupbtn{
+    margin-right: 2%;
+    padding: 10px 20px;
+}
+
+button a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+.loginbtn{
+    outline: none;
+    border: none;
+    border-radius: 5px;    
+}
+
+.signupbtn{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.loginbtn:hover{
+    background-color: #FF3B3F;
+    outline: none;
+    border: none;
+}
+
+.signupbtn:hover{
+    background-color: #FF3B3F;
+    outline: none;
+    border: none;
+}
+
+button a:hover{
+    text-decoration: none;
+    color: #EFEFEF;
+    text-transform: uppercase;
+}
+
+/* Navigation Styles */
+
+ol{
+    position: absolute;
+    top: 9%;
+    left: 17%;
+    padding: 15px 0;
+    background-color: whitesmoke;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 100%;
+}
+
+ol li{
+    list-style: none;
+    text-align: center;
+    display: block;
+    border-right: 1px solid  rgba(0,0,0,0.4);
+}
+
+ol li:last-child{
+    border-right: none;
+}
+
+ol li a{
+    text-decoration: none;
+    padding: 0 70px;
+    display: block;
+}
+
+ol li a .icon{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 auto 10px;
+}
+
+ol li a .icon .fas{
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 34px;
+    transition: 0.5s;
+    color: #000;
+}
+
+ol li a .icon .fas:last-child{
+    color: #FF3B3F;
+}
+
+ol li a:hover .icon .fas{
+    transform: translateY(-100%);
+}
+
+ol li a .name{
+    position: relative;
+    height: 20px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+ol li a .name .navname{
+    display: block;
+    position: relative;
+    color: #000;
+    font-size: 18px;
+    line-height: 20px;
+    transition: 0.5s;
+}
+
+ol li a .name .navname:before{
+    content: attr(data-text);
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #FF3B3F;
+}
+
+ol li a:hover .name .navname{
+    transform: translateY(20px);
+}
+
+/*Login Form Styles */
+
+.arrow{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #FF3B3F;
+    right: 61px;
+    top: 59px;
+    display: none;
+}
+
+.login-form{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    background: #000;
+    color: #fff;
+    right: 11px;
+    top: 76px;
+    z-index: 1;
+    border-radius: 5px;
+    display: none;
+}
+
+.login-form > form{
+    width: 250px;
+    margin: 25px auto;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+}
+
+.login-form > form > div > label{
+    font-weight: bold;
+}
+
+.loginLabel{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid darkgrey;
+    outline: none;
+    margin-bottom: 20px;
+    background: transparent;
+    color: #FF3B3F;
+}
+
+.login-form > form > div > button {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #FF3B3F;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.login-form > form > div > button:hover {
+    background: #fff;
+    color: #FF3B3F;
+}
+
+.login-form > form > div > a {
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 60px;
+    color: darkgrey;
+}
+
+.login-form > form > div > a:hover{
+    color: #FF3B3F;
+}
+
+/* Search Bar Styles */
+
+.search{
+    padding: 20px 30px;
+}
+
+.input{
+    width: 250px;
+    border: 3px solid black;
+    background: #EFEFEF;
+    padding: 15px ;
+    border-radius: 50px;
+    color: #FF3B3F;
+    font-size: 15px;
+    outline: none;
+}
+
+::-webkit-input-placeholder{
+    color: #FF3B3F;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+::-moz-input-placeholder{
+    color: #FF3B3F;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+::-ms-input-placeholder{
+    color: #FF3B3F;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.close-btn{
+    cursor: pointer;
+    width: 120px;
+    height: 55px;
+    background: black;
+    color: #FF3B3F;
+    border: 0;
+    border-radius: 50px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.close-btn:hover{
+    cursor: pointer;
+    width: 120px;
+    height: 55px;
+    background: #FF3B3F;
+    color: black;
+    border: 0;
+    border-radius: 50px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+.footer{
+    background-color: #2F3640;
+    height: 80px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.footer h3{
+    color: white;
+    padding-top: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+}

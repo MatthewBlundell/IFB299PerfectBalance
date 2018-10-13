@@ -1,10 +1,8 @@
 'use strict';
-
-// document ready function
 $(function(){
     
     // global configurations
-    var width = 1280;
+    var width = 1750;
     var animationSpeed = 1000;
     var pause = 5000;
     var currentSlide = 1;
@@ -21,7 +19,7 @@ $(function(){
             //if the slides reach last slide then go back to beginning
             currentSlide++;
             console.log(currentSlide);
-            if(currentSlide === $slides.length){
+            if(currentSlide === $slides.length + 1){
                 currentSlide = 1;
                 $slideContainer.css('margin-left', 0);
             }
