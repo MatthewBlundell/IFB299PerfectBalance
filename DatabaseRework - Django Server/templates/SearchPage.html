@@ -18,7 +18,7 @@
 	<script src = "{% static 'adminHeader.js' %}"></script>
 
 </head>
-<body>    
+<body>
     <div class = "header">
 		{% if session == False %}
         <button class = "loginbtn"><a href = ""><i class="fas fa-sign-in-alt"></i>    Login</a></button>
@@ -55,7 +55,7 @@
                     <a href = "">Lost your password?</a>
                 </div>
             </form>
-			
+
         </div>
 		{% if session == True and authlevel == 1 %}
                 <div class = "container">
@@ -191,6 +191,12 @@
                 <option value="6">Alfa Romeo</option>
                 <option value="7">Volvo</option>
                 <option value="8">Renault</option>
+                <option value="9">Land Rover</option>
+                <option value="10">Saab</option>
+                <option value="11">Nissan</option>
+                <option value="12">Peugot</option>
+                <option value="13">Datsun</option>
+                <option value="14">Chrysler</option>
               </select>
             </div>
 						<!--<span class="TextBox" style="position:relative; left:4%;">
@@ -298,6 +304,7 @@
 		{% for vehicle in VehicleList %}
 		<div class = "Result">
 			<div class="Picture">
+        <img class="Logo" src="..\static\images\Brands\{{vehicle.carmake}}.png" alt="Brand">
 			</div>
 			<div class="TextWrapper">
 				<div class="BoxWrapper">

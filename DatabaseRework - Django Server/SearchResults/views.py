@@ -71,7 +71,7 @@ def StringSearch(input):
 
     if 'alfa' in inputsplit:
         if 'romeo' in inputsplit:
-            for i in Vehicle.objects.filter(carmake="LAND ROVER"):
+            for i in Vehicle.objects.filter(carmake="ALFA ROMEO"):
                 vehiclelist.append(i)
 
     for z in inputsplit:
