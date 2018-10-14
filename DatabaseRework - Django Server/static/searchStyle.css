@@ -262,6 +262,13 @@
 	width:15%;
 	background-color:white;
 }
+.Logo{
+	display: block;
+	max-width: 180px;
+	max-height: 130px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 .TextWrapper {
 	vertical-align:top;
