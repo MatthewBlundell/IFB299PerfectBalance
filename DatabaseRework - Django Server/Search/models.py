@@ -43,8 +43,7 @@ class User(models.Model):
     username = models.CharField(max_length=255, blank=True, null=True)
     password = models.CharField(max_length=255, blank=True, null=True)
     authenticationlevel = models.IntegerField(db_column='authenticationLevel', blank=True, null=True)  # Field name made lowercase.
-    sessionkey = models.CharField(db_column='SessionKey', max_length=45, blank=True, null=True)  # Field name made lowercase.
-
+    
     class Meta:
         managed = False
         db_table = 'user'
