@@ -301,10 +301,10 @@
             </tr>
 			{% for vehicle, person, order in together%}
 			<tr>
-				<td><a href='../Car_Information/{{vehicle.carid}}' style="color: inherit;">{{vehicle.carid}}</a></td>
+				<td><a href='../../Car_Information/{{vehicle.carid}}' style="color: inherit;">{{vehicle.carid}}</a></td>
 				<td>{{vehicle.carmake}}</td>
 				<td>{{vehicle.model}}</td>
-				<td><a href='../Profile/{{person.userid}}' style="color: inherit;">{{person.name}}</a></td>
+				<td><a href='../../Profile/{{person.userid}}' style="color: inherit;">{{person.name}}</a></td>
 				<td>{{order.pickupdate}}</td>
 			</tr>
 			{% endfor %}

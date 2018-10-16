@@ -158,21 +158,36 @@
           <div>
             <form class = "loginR" method="post" action="../Register/">
 				{% csrf_token %}
-				{{ form.as_p }}
                 <h3>Register</h3>
 				{% if NameVerify == True %}
                 <label>Name:</label><input  class = "loginLabel"type="text" placeholder="Enter Name" name="Name" required></br>
 				{% else %}
-				<label>Name: <b style="display:inline-block; color: red;">Please enter a valid name</b></label><input  class = "loginLabel"type="text" placeholder="Enter Name" name="Name" required></br>
+				<label>Name: <b style="display:inline-block; color: red;">Please enter a valid Name</b></label><input  class = "loginLabel"type="text" placeholder="Enter Name" name="Name" required></br>
 				{% endif %}
+				{% if NumberVerify == True %}
                 <label>Phone Number:</label><input  class = "loginLabel"type="tel" placeholder="Enter Phone Number " name="Number" required></br>
+				{% else %}
+				<label>Phone Number: <b style="display:inline-block; color: red;">Please enter a valid Phone Number</b></label><input  class = "loginLabel"type="tel" placeholder="Enter Phone Number " name="Number" required></br>
+				{% endif %}
                 <label>Address:</label><input class = "loginLabel" type="text" placeholder="Enter Address" name="Address" required></br>
                 <label>Date of Birth:</label><input class = "loginLabel" type="date" placeholder="--/--/----" name="DOB" required></br>
                 <label>Occupation:</label><input class = "loginLabel" type="text" placeholder="Enter your occupation here" name="Occupation" required></br>
-                <label>Gender:</label><br><select name = "Gender"><option value = "male">Male</option><option value = "female">Female</option><option value = "other">Other</option></select><br>
-                <label>Email:</label><input class = "loginLabel" type="text" placeholder="Enter a Email Here" name="Email" required></br>
+                <label>Gender:</label><br><select name = "Gender"><option value = "male">Male</option><option value = "female">Female</option></select><br>
+                {% if EmailVerify == True %}
+				<label>Email:</label><input class = "loginLabel" type="text" placeholder="Enter a Email Here" name="Email" required></br>
+				{% else %}
+				<label>Email: <b style="display:inline-block; color: red;">Please enter a valid Email Address</b></label><input class = "loginLabel" type="text" placeholder="Enter a Email Here" name="Email" required></br>
+				{% endif %}
+				{% if PasswordVerify == True %}
                 <label>Password:</label><input class = "loginLabel" type="password" placeholder="Enter a Password Here" name="Password" required></br>
+				{% else %}
+				<label>Password: <b style="display:inline-block; color: red;">Please enter a Password longer than 8 characters</b></label><input class = "loginLabel" type="password" placeholder="Enter a Password Here" name="Password" required></br>
+				{% endif %}
+				{% if PasswordReVerify == True %}
                 <label>Rewrite Password:</label><input class = "loginLabel" type="password" placeholder="Re-enter password" name="PasswordRe" required></br>
+				{% else %}
+				<label>Rewrite Password: <b style="display:inline-block; color: red;">Password is not the same</b></label><input class = "loginLabel" type="password" placeholder="Re-enter password" name="PasswordRe" required></br>
+				{% endif %}
                 <button class = "regbtn">Register</button>
             </form>
           </div>

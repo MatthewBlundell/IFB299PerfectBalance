@@ -16,7 +16,7 @@ def InfoUser(request, profile):
     if request.session.has_key('email'):
         uservar = User.objects.get(username=request.session['email'])
         if uservar.authenticationlevel != 1:
-            if uservar.userid != profile:
+            if uservar.userid != int(profile):
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     else:
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
