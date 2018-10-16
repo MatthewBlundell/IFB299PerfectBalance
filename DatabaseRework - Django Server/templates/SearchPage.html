@@ -166,7 +166,7 @@
 		<form id = "SearchWrapper" action="../Search/">
 			<span style="height: 100%; width: 85%; display: inline-block; vertical-align: top">
 				<span id = "SearchBar">
-					<input name="SearchField" placeholder="Search. . ." value=""></input>
+					<input name="SearchField" placeholder="Search. . ." value="{{Search}}"></input>
 				</span>
 				<span id = "DateStart">
 					<input type="date" name="StartDate" placeholder=""></input>
@@ -181,37 +181,76 @@
 							<div class="FilterTitle">Brand:</div>
 						</span>
             <div class="TextBox" style="position:relative; left:4%;">
-              <select>
+              <select name = "Brand">
                 <option value="0">...</option>
-                <option value="1">BMW</option>
-                <option value="2">Volkswagen</option>
-                <option value="3">Mercedes-Benz</option>
-                <option value="4">Mazda</option>
-                <option value="5">Datsun</option>
-                <option value="6">Alfa Romeo</option>
-                <option value="7">Volvo</option>
-                <option value="8">Renault</option>
-                <option value="9">Land Rover</option>
-                <option value="10">Saab</option>
-                <option value="11">Nissan</option>
-                <option value="12">Peugot</option>
-                <option value="13">Datsun</option>
-                <option value="14">Chrysler</option>
+				{% if Brand == 1 %}
+                <option value="1" selected>BMW</option>
+				{% else %}
+				<option value="1">BMW</option>
+				{% endif %}
+				{% if Brand == 2 %}
+                <option value="2" selected>Volkswagen</option>
+				{% else %}
+				<option value="2">Volkswagen</option>
+				{% endif %}
+				{% if Brand == 3 %}
+                <option value="3" selected>Mercedes-Benz</option>
+				{% else %}
+				 <option value="3">Mercedes-Benz</option>
+				{% endif %}
+				{% if Brand == 4 %}
+                <option value="4" selected>Mazda</option>
+				{% else %}
+				<option value="4">Mazda</option>
+				{% endif %}
+				{% if Brand == 5 %}
+                <option value="5" selected>Datsun</option>
+				{% else %}
+				<option value="5">Datsun</option>
+				{% endif %}
+				{% if Brand == 6 %}
+                <option value="6" selected>Alfa Romeo</option>
+				{% else %}
+				<option value="6">Alfa Romeo</option>
+				{% endif %}
+				{% if Brand == 7 %}
+                <option value="7" selected>Volvo</option>
+				{% else %}
+				<option value="7">Volvo</option>
+				{% endif %}
+				{% if Brand == 8 %}
+                <option value="8" selected>Renault</option>
+				{% else %}
+				<option value="8">Renault</option>
+				{% endif %}
+				{% if Brand == 9 %}
+                <option value="9" selected>Land Rover</option>
+				{% else %}
+				<option value="9">Land Rover</option>
+				{% endif %}
+				{% if Brand == 10 %}
+                <option value="10" selected>Saab</option>
+				{% else %}
+				<option value="10">Saab</option>
+				{% endif %}
+				{% if Brand == 11 %}
+                <option value="11" selected>Nissan</option>
+				{% else %}
+				<option value="11">Nissan</option>
+				{% endif %}
+				{% if Brand == 12 %}
+                <option value="12" selected>Peugot</option>
+				{% else %}
+				<option value="12">Peugot</option>
+				{% endif %}
+				{% if Brand == 13 %}
+                <option value="13" selected>Chrysler</option>
+				{% else %}
+				<option value="13">Chrysler</option>
+				{% endif %}
+			
               </select>
             </div>
-						<!--<span class="TextBox" style="position:relative; left:4%;">
-							<div class="TextArea">BMW</div><input type="checkbox" name="BMW"></input>
-							<div class="TextArea"style="font-size:10pt;">Volkswagen</div><input type="checkbox" name="Volks" style="top: 0.5em;"></input>
-							<div class="TextArea" style="font-size:9pt;">Mercedes-Benz</div><input type="checkbox" name="Benz" style="top: 1em;"></input>
-							<div class="TextArea">Mazda</div><input type="checkbox" name="Mazda"></input>
-						</span>
-						<span class="TextBox" style="position:relative; left:4%;">
-							<div class="TextArea">Datsun</div><input type="checkbox" name="Datsun"></input>
-							<div class="TextArea" style="font-size:10pt;">Alfa Romeo</div><input type="checkbox" name="Alfa" style="top: 1em;"></input>
-							<div class="TextArea">Volvo</div><input type="checkbox" name="Volvo"></input>
-							<div class="TextArea">Renault</div><input type="checkbox" name="Renault"></input>
-						</span>
-          -->
 					</span>
 
 					<span class = "BoxFilters" style="position:relative; left:2%;">
@@ -220,30 +259,45 @@
 						</span>
 
             <div class="TextBox" style="position:relative; left:4%;">
-              <select>
+              <select name = "Body">
                 <option value="0">...</option>
-                <option value="1">4D Wagon</option>
-                <option value="2">3D Hardback</option>
-                <option value="3">2D Hardtop</option>
-                <option value="4">2D Hardtop</option>
-                <option value="5">3D Hatchback</option>
-                <option value="6">4D Sedan</option>
-                <option value="7">2D Coupe</option>
+				{% if Body == 1 %}
+                <option value="1" selected>4D Wagon</option>
+				{% else %}
+				<option value="1">4D Wagon</option>
+				{% endif %}
+				{% if Body == 2 %}
+                <option value="2" selected>3D Hardback</option>
+				{% else %}
+				<option value="2">3D Hardback</option>
+				{% endif %}
+				{% if Body == 3 %}
+                <option value="3" selected>2D Hardback</option>
+				{% else %}
+				<option value="3">2D Hardback</option>
+				{% endif %}
+				{% if Body == 4 %}
+                <option value="4" selected>2D Hardtop</option>
+				{% else %}
+				<option value="4">2D Hardtop</option>
+				{% endif %}
+				{% if Body == 5 %}
+                <option value="5" selected>3D Hatchback</option>
+				{% else %}
+				<option value="5">3D Hatchback</option>
+				{% endif %}
+				{% if Body == 6 %}
+                <option value="6" selected>4D Sedan</option>
+				{% else %}
+				<option value="6">4D Sedan</option>
+				{% endif %}
+				{% if Body == 7 %}
+                <option value="7" selected>2D Coupe</option>
+				{% else %}
+				<option value="7">2D Coupe</option>
+				{% endif %}
               </select>
             </div>
-            <!--
-						<span class="TextBox">
-							<div class="TextArea2">4D Wagon</div><input type="checkbox" name="4DWagon"></input>
-							<div class="TextArea2">3D Hardback</div><input type="checkbox" name="3DHardback"></input>
-							<div class="TextArea2">2D Hardtop</div><input type="checkbox" name="2DHardtop"></input>
-							<div class="TextArea2">2D Convertible</div><input type="checkbox" name="2DConvert" style="top:0.6em;"></input>
-						</span>
-						<span class="TextBox">
-							<div class="TextArea2">3D Hatchback</div><input type="checkbox" name="3DHatch" style="top:0.6em;"></input>
-							<div class="TextArea2">4D Sedan</div><input type="checkbox" name="4DSedan"></input>
-							<div class="TextArea2">2D Coupe</div><input type="checkbox" name="2DCoupe"></input>
-						</span>
-          -->
 					</span>
 
           <span class = "BoxFilters" style="position:relative; left:2%;">
@@ -252,14 +306,38 @@
 						</span>
 
             <div class="TextBox" style="position:relative; left:4%;">
-              <select>
+              <select name = "Seats">
                 <option value="0">...</option>
-                <option value="1">Two (2)</option>
-                <option value="2">Three (3)</option>
-                <option value="3">Four (4)</option>
-                <option value="4">Five (5)</option>
-                <option value="5">Six (6)</option>
-                <option value="5">Seven (7)</option>
+				{% if Seats == 1 %}
+                <option value="1" selected>Two (2)</option>
+				{% else %}
+				<option value="1">Two (2)</option>
+				{% endif %}
+				{% if Seats == 2 %}
+                <option value="2" selected>Three (3)</option>
+				{% else %}
+				<option value="2">Three (3)</option>
+				{% endif %}
+				{% if Seats == 3 %}
+                <option value="3" selected>Four (4)</option>
+				{% else %}
+				<option value="3">Four (4)</option>
+				{% endif %}
+				{% if Seats == 4 %}
+                <option value="4" selected>Five (5)</option>
+				{% else %}
+				<option value="4">Five (5)</option>
+				{% endif %}
+				{% if Seats == 5 %}
+                <option value="5" selected>Six (6)</option>
+				{% else %}
+				<option value="5">Six (6)</option>
+				{% endif %}
+				{% if Seats == 6 %}
+                <option value="6" selected>Seven+ (7+)</option>
+				{% else %}
+				<option value="6">Seven+ (7+)</option>
+				{% endif %}
               </select>
             </div>
 					</span>
@@ -270,10 +348,53 @@
 						</span>
 
             <div class="TextBox" style="position:relative; left:4%;">
-              <select>
+              <select style = "width:8em;"name = "Fuel">
                 <option value="0">...</option>
-                <option value="1">Petrol</option>
-                <option value="2">Diesel</option>
+				{% if Fuel == 1 %}
+                <option value="1" selected>Diesel Turbo F/INJ</option>
+				{% else %}
+				<option value="1">Diesel Turbo F/INJ</option>
+				{% endif %}
+				{% if Fuel == 2 %}
+                <option value="2" selected>Diesel Turbo</option>
+				{% else %}
+				<option value="2">Diesel Turbo</option>
+				{% endif %}
+				{% if Fuel == 3 %}
+				<option value="3" selected>Multi Point F/INJ</option>
+				{% else %}
+				<option value="3">Multi Point F/INJ</option>
+				{% endif %}
+				{% if Fuel == 4 %}
+				<option value="4" selected>Turbo CDI</option>
+				{% else %}
+				<option value="4">Turbo CDI</option>
+				{% endif %}
+				{% if Fuel == 5 %}
+				<option value="5" selected>Electronic F/INJ</option>
+				{% else %}
+				<option value="5">Electronic F/INJ</option>
+				{% endif %}
+				{% if Fuel == 6 %}
+				<option value="6" selected>Carb</option>
+				{% else %}
+				<option value="6">Carb</option>
+				{% endif %}
+				{% if Fuel == 7 %}
+				<option value="7" selected>Single Point F/INJ</option>
+				{% else %}
+				<option value="7">Single Point F/INJ</option>
+				{% endif %}
+				{% if Fuel == 8 %}
+				<option value="8" selected>Turbo MPFI</option>
+				{% else %}
+				<option value="8">Turbo MPFI</option>
+				{% endif %}
+				{% if Fuel == 9 %}
+				<option value="9" selected>Super Charged MPFI</option>
+				{% else %}
+				<option value="9">Super Charged MPFI</option>
+				{% endif %}
               </select>
             </div>
 					</span>
@@ -284,8 +405,8 @@
 						</span>
 						<span class="TextBox" style="width:5em;">
 							<div id = "NumberWrapper">
-								<div class="NumberText">Minimum Amount:</div><input type="number" name="Min"></input>
-								<div class="NumberText">Maximum Amount:</div><input type="number" name="Max"></input>
+								<div class="NumberText">Minimum Amount:</div><input type="number" name="Min" value="{{Min}}"></input>
+								<div class="NumberText">Maximum Amount:</div><input type="number" name="Max" value="{{Max}}"></input>
 							</div>
 						</span>
 					</span>

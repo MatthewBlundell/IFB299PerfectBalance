@@ -156,20 +156,25 @@
 				{% endif %}
         <div>
           <div>
-            <div class = "loginR">
+            <form class = "loginR" method="post" action="../Register/">
+				{% csrf_token %}
+				{{ form.as_p }}
                 <h3>Register</h3>
-                <label>Name:</label><input  class = "loginLabel"type="text" placeholder="Enter Name" required></br>
-                <label>Phone Number:</label><input  class = "loginLabel"type="tel" placeholder="Enter Phone Number " required></br>
-                <label>Address:</label><input class = "loginLabel" type="text" placeholder="Enter Address" required></br>
-                <label>Date of Birth:</label><input class = "loginLabel" type="date" placeholder="--/--/----" required></br>
-                <label>Occupation:</label><input class = "loginLabel" type="text" placeholder="Enter your occupation here" required></br>
-                <label>Gender:</label><br><select name = "gender"><option value = "male">Male</option><option value = "female">Female</option><option value = "other">Other</option></select><br>
-                <label>Username:</label><input class = "loginLabel" type="text" placeholder="Enter a Username Here" required></br>
-                <label>Password:</label><input class = "loginLabel" type="password" placeholder="Enter a Password Here" required></br>
-                <label>Rewrite Password:</label><input class = "loginLabel" type="password" placeholder="Re-enter password" required></br>
-                <label>Email:</label><input class = "loginLabel" type="email" placeholder="Enter email" required></br>
+				{% if NameVerify == True %}
+                <label>Name:</label><input  class = "loginLabel"type="text" placeholder="Enter Name" name="Name" required></br>
+				{% else %}
+				<label>Name: <b style="display:inline-block; color: red;">Please enter a valid name</b></label><input  class = "loginLabel"type="text" placeholder="Enter Name" name="Name" required></br>
+				{% endif %}
+                <label>Phone Number:</label><input  class = "loginLabel"type="tel" placeholder="Enter Phone Number " name="Number" required></br>
+                <label>Address:</label><input class = "loginLabel" type="text" placeholder="Enter Address" name="Address" required></br>
+                <label>Date of Birth:</label><input class = "loginLabel" type="date" placeholder="--/--/----" name="DOB" required></br>
+                <label>Occupation:</label><input class = "loginLabel" type="text" placeholder="Enter your occupation here" name="Occupation" required></br>
+                <label>Gender:</label><br><select name = "Gender"><option value = "male">Male</option><option value = "female">Female</option><option value = "other">Other</option></select><br>
+                <label>Email:</label><input class = "loginLabel" type="text" placeholder="Enter a Email Here" name="Email" required></br>
+                <label>Password:</label><input class = "loginLabel" type="password" placeholder="Enter a Password Here" name="Password" required></br>
+                <label>Rewrite Password:</label><input class = "loginLabel" type="password" placeholder="Re-enter password" name="PasswordRe" required></br>
                 <button class = "regbtn">Register</button>
-            </div>
+            </form>
           </div>
         </div>
 
