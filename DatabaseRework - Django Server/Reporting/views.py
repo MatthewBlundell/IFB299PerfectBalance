@@ -3,14 +3,17 @@ from django.template import loader
 from Search.models import Order, Vehicle, User
 from django.shortcuts import redirect
 
-# Create your views here.
-
-def Report(request, date):
+# Main reporting page url request.
+# Utilises the parameters of month and week in order to
+# populate the charts on the reporting page.
+def Report(request, date, weekNum):
     Check = False
     name = -1
     userid = -1
     auth = -1
 
+# This code confirms whether the user is authentic. If not then
+# the user will not be able to reach the reporting page.
     if request.session.has_key('email'):
         uservar = User.objects.get(username=request.session['email'])
         name = uservar.name
@@ -24,8 +27,12 @@ def Report(request, date):
     else:
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    week1 = ["20070207", "20070220", "20070221", '20070222', '20070223', '20070224', '20070225']
+# Lists to hold data for the weekly and monthly data.
+# Populated by data from the MYSQL database.
     week1counts = []
+    week2counts = []
+    week3counts = []
+    week4counts = []
     monthlength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     monthcounts = []
     year = date[0:4]
@@ -34,6 +41,8 @@ def Report(request, date):
 
     ordersmonth = []
     ordersweek = []
+
+# For loop that filters the weekly and monthly data for use in the charts
     for i in range(28):
         intday = int(day)
         if i == 0:
@@ -59,22 +68,32 @@ def Report(request, date):
             day = str(intday)
         date = year + month + day
 
+# Weekly data is placed into the week lists.
         if i < 7:
             week1counts.append(Order.objects.filter(pickupdate=date).count())
+        if i >= 7 & i < 14:
+            week2counts.append(Order.objects.filter(pickupdate=date).count())
+        if i >= 14 & i < 21:
+            week3counts.append(Order.objects.filter(pickupdate=date).count())
+        if i >= 21 & i < 28:
+            week4counts.append(Order.objects.filter(pickupdate=date).count())
 
+# Monthly data placed into month list.
         monthcounts.append(Order.objects.filter(pickupdate=date).count())
         for z in Order.objects.filter(pickupdate=date).extra(
             {'carid_uint': "CAST(carid as UNSIGNED)", 'userid_uint': "CAST(userid as UNSIGNED)"}):
             ordersmonth.append(z)
             if i < 7:
                 ordersweek.append(z)
-
+# Monthly data broken down into weekly segments.
+# This is used in the Monthly rental chart.
     week1total = sum(monthcounts[0:6])
     week2total = sum(monthcounts[7:13])
     week3total = sum(monthcounts[14:20])
     week4total = sum(monthcounts[21:27])
 
-
+# This for loop pulls all rentals matching the month requested, and
+# prepares the data for displaying in a styled table in the HTML.
     vehicles = []
     people = []
     for i in ordersmonth:
@@ -84,6 +103,9 @@ def Report(request, date):
     together = zip(vehicles, people, ordersmonth)
 
     template = loader.get_template('reporting.html')
+
+# The following code is a library of all data
+# that will be utilised in the HTML code of the reporting page.
     context = {
         'together': together,
         'day1': week1counts[0],
@@ -93,6 +115,13 @@ def Report(request, date):
         'day5': week1counts[4],
         'day6': week1counts[5],
         'day7': week1counts[6],
+        'day8': week4counts[0],
+        'day9': week4counts[1],
+        'day10': week4counts[2],
+        'day11': week4counts[3],
+        'day12': week4counts[4],
+        'day13': week4counts[5],
+        'day14': week4counts[6],
         'week1total': week1total,
         'week2total': week2total,
         'week3total': week3total,
@@ -104,8 +133,11 @@ def Report(request, date):
         'session': request.session.has_key('email'),
     }
 
+# Returns the page request and data.
     return HttpResponse(template.render(context, request))
 
+# This function returns the latest month on the reporting page.
+# designed to be the default entry point to the reporting page.
 def ReportRedirect(request):
     datesarray = Order.objects.order_by('pickupdate')
 
@@ -113,12 +145,14 @@ def ReportRedirect(request):
 
     latestdate = yearmonth[0:6] + "01"
 
-    return redirect('../Reporting/' + latestdate)
+    return redirect('../Reporting/' + latestdate + '/1')
 
-def Redirect(request, date):
+# This function is called when the user utilises the
+# month/year choice comboboxes.
+def Redirect(request, date, weekNum):
     year = request.GET.get('Year')
     month = request.GET.get('Month')
     if(year == '-' or month == '-'):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    return redirect('../../../Reporting/' + year+month+'01')
+    return redirect('../../../../Reporting/' + year+month+'01/1')

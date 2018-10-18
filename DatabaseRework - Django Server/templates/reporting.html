@@ -18,20 +18,27 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type = "text/javascript" src = "{% static 'adminHeader.js' %}"></script>
 </head>
-<body>    
+<body>
     <div class = "header">
+
+<!-- If not logged in, show the sign in/sign up buttons -->
 		{% if session == False %}
         <button class = "loginbtn"><a href = ""><i class="fas fa-sign-in-alt"></i>    Login</a></button>
         <button class = "signupbtn"><a href = "/Register/"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+<!-- ELSE: show the log out button -->
 		{% else %}
 		<div>
 		<div style="float:right; vertical-align:center; margin-right:3em; margin-top:0.5em;"><b>{{name}}</b></div>
         <button style = "style:inline-block;"class = "signupbtn"><a href="/Logout/"><i class="fas fa-sign-in-alt"></i>    Logout</a></button>
 		</div>
 		{% endif %}
+
+<!-- Company logo -->
         <h1 class = "compname"><span class = "logotitle">C</span>ar <span class = "logotitle">R</span>ental <span class = "logotitle">C</span>ompany</h1>
         <div class = "arrow"></div>
     </div>
+
+<!-- Log in form that will pop out if user clicks on the sign in button -->
     <div class = "login-form">
             <form action="/Login/" method="post">
 			{% csrf_token %}
@@ -55,7 +62,9 @@
                     <a href = "">Lost your password?</a>
                 </div>
             </form>
-			
+
+
+<!-- Full banner with all links are shown if the user is authenticated with the right level -->
         </div>
 		{% if session == True and authlevel == 1 %}
                 <div class = "container">
@@ -63,7 +72,7 @@
                         <nav>
                             <ol>
                                 <li>
-                                    <a href = "../../">
+                                    <a href = "../../../">
                                         <div class = "icon">
                                             <i class="fas fa-home"></i>
                                             <i class="fas fa-home"></i>
@@ -115,6 +124,8 @@
                         </nav>
                     </div>
                 </div>
+
+<!-- Else: if user is not authenticated as staff, basic links are shown  -->
 				{% else %}
 				    <div class = "container">
 					<div id = "sidebar">
@@ -156,8 +167,8 @@
 					</div>
 				</div>
 				{% endif %}
-				
-				
+
+<!-- Month combobox provides user choice of which month to show data for -->
 		<form action="./Redirect/">
           <select name="Month">
               <option value="-">MONTH</option>
@@ -175,24 +186,26 @@
               <option value="12">December</option>
           </select>
 
+<!-- Year combobox used in conjunction with month -->
           <select name="Year">
-              <option value="-">YEAR</option>             
-              <option value="2005">2005</option>            
+              <option value="-">YEAR</option>
+              <option value="2005">2005</option>
               <option value="2006">2006</option>
-              <option value="2007">2007</option>             
+              <option value="2007">2007</option>
           </select>
 
+<!-- Submit button -->
           <input type="submit" value="Submit"/>
-		  
-		 </form> 
-		 
+		 </form>
+
+<!-- JavaScript Graph that displays the weekly data in a functional manner -->
     <div class="GraphContainer" style="margin-bottom:3%;">
 
     <div class="row">
         <div class="GraphWrapper">
         <div class="column1" style="height:400px">
             <div id = "heading">
-                <h3>Weekly Rentals</h3> 
+                <h3>Weekly Rentals</h3>
              </div>
 			<canvas id="Weekly" style="height:100%"></canvas>
 			<script>
@@ -234,12 +247,12 @@
     }
 });
 			</script>
-			
-			
-        </div> 
+        </div>
+
+<!-- JavaScript Graph that displays the monthly data in a functional manner -->
         <div class="column1" style="height:400px;">
-            <div id = "heading"">
-                <h3>Monthly Rentals</h3> 
+            <div id = "heading">
+                <h3>Monthly Rentals</h3>
              </div>
             			<canvas id="Monthly" style="height:100%"></canvas>
 			<script>
@@ -281,16 +294,18 @@
     }
 });
 			</script>
-    
-        </div> 
+
+        </div>
     </div>
-    </div> 
+    </div>
+
+<!-- Table that shows detailed information of all rentals for the month -->
     <div class="row">
         <div class="column2" style="height:400px;">
             <div id = "heading">
                <h3>Current Rentals</h3>
             </div>
-            
+
          <table id="Rented" style="width:100%">
             <tr>
                 <th>VehicleID</th>
@@ -310,14 +325,14 @@
 			{% endfor %}
 
         </table>
-        </div> 
+        </div>
     </div>
 	</div>
 
-    
+<!-- Footer placed at bottom of page -->
     <div class = "footer">
         <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
     </div>
-   
+
 </body>
 </html>
