@@ -38,7 +38,7 @@ h5{
 }
 
 h6{
-    
+
     font-size: 18px;
     margin: 10px;
 }
@@ -60,7 +60,7 @@ p{
 .column2{
     float: right;
     background-color: white;
-    width: 30%;
+    width: 25%;
     height: 425px;
     border: solid black 1px;
     margin-right: 100px
@@ -70,7 +70,7 @@ p{
     flex: 1 0 auto;
     margin: 0 auto;
     width: 100%;
-    
+
 }
 
 .button{
@@ -125,7 +125,7 @@ ul#features_list li{
     height: 40px;
     border-radius: 50%;
     background-color: #2F3640;
-    display: flex;  
+    display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.4s;
