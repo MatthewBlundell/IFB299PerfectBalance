@@ -105,7 +105,8 @@ def Report(request, date, weekNum):
         people.append(User.objects.get(userid=i.userid_uint))
 
     together = zip(vehicles, people, ordersmonth)
-
+    prevWeek = int(weekNum) - 1
+    nextWeek = int(weekNum) + 1
     template = loader.get_template('reporting.html')
 
 # The following code is a library of all data
@@ -123,6 +124,9 @@ def Report(request, date, weekNum):
         'week2total': week2total,
         'week3total': week3total,
         'week4total': week4total,
+        'prevWeek' : prevWeek,
+        'weekNum' : weekNum,
+        'nextWeek' : nextWeek,
         'name': name,
         'userid': userid,
         'authlevel': auth,
@@ -149,13 +153,8 @@ def ReportRedirect(request):
 def Redirect(request, date, weekNum):
     year = request.GET.get('Year')
     month = request.GET.get('Month')
-    week1 = request.GET.get('week1')
 
-    if week1 == 'Week 1':
-        return redirect('../1')
+    if(year == '-' or month == '-'):
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    else:
-        if(year == '-' or month == '-'):
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
-        return redirect('../../../../Reporting/' + year+month+'01/1')
+    return redirect('../../../../Reporting/' + year+month+'01/1')

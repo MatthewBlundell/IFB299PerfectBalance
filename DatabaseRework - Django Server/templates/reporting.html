@@ -79,9 +79,9 @@
                     </div>
                 </div>
 
-
+    <div align="center">
 		<form action="./Redirect/">
-          <select name="Month" style="position:relative; left:10%;">
+          <select name="Month">
               <option value="-">MONTH</option>
               <option value="01">January</option>
               <option value="02">February</option>
@@ -97,32 +97,44 @@
               <option value="12">December</option>
           </select>
 
-          <select name="Year" style="position:relative; left:10%;">
+          <select name="Year">
               <option value="-">YEAR</option>
               <option value="2005">2005</option>
               <option value="2006">2006</option>
               <option value="2007">2007</option>
           </select>
-          <br>
 
-            <input type="submit" value="Submit" class = "weekbtn" style="position:relative; left:11%;">
+            <input type="submit" value="Submit" class = "weekbtn">
             <br>
 		 </form>
+   </div>
 
-		<form action="./Redirect/">
 
-      <input type = "week1" value = "Week 1" class = "weekbtn">
-      <input type = "week2" value = "Week 2" class = "weekbtn">
-      <input type = "week3" value = "Week 3" class = "weekbtn">
-      <input type = "week4" value = "Week 4" class = "weekbtn">
+     <div align="center"style="margin-top:0.5em;">
+           {% if prevWeek == 0 %}
+              <input type = "button" value = "Earliest" class = "greybtn">
+           {% else %}
+              <a href="../{{prevWeek}}">
+                <input type = "button" value = "Week {{prevWeek}}" class = "weekbtn">
+              </a>
+             {% endif %}
+             Current: Week {{weekNum}}
 
-    </form>
+           {% if nextWeek == 5 %}
+              <input type = "button" value = "Latest" class = "greybtn">
+           {% else %}
+             <a href="../{{nextWeek}}">
+               <input type = "button" value = "Week {{nextWeek}}" class = "weekbtn">
+             </a>
+             {% endif %}
+       </div>
+
 
     <div class="GraphContainer" style="margin-bottom:3%;">
-
-    <div class="row">
+        <div class="row">
         <div class="GraphWrapper">
         <div class="column1" style="height:400px">
+
             <div id = "heading">
                 <h3>Weekly Rentals</h3>
              </div>
