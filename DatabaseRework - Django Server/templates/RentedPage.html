@@ -202,12 +202,23 @@
             <p style="margin-bottom: 30px;font-size: 25px; text-align: center;"><b>Total : </b>A$ {{Price}} per Day</p>
 			<form method="POST" style="float: left;display:inline-block"action='./Rent/'>
 			{% csrf_token %}
+			{% if Reservable == True %}
             <button class="button" style="float: none;">CONFIRM</button>
+			{% else %}
+			<button class="button" style="float: none; opacity: 0.4;" disabled>CONFIRM</button>
+			{% endif %}
 			<input type="hidden" name="pickupdate" value="{{datestart}}"></input>
 			<input type="hidden" name="returndate" value="{{dateend}}"></input>
 			<input type="hidden" name="endlocation" value="{{endlocation}}"></input>
 			</form>
-            <button class="button" style="margin-right: 10px;float: right;">CANCEL</button>
+            <a href="../." class="button" style="margin-right: 10px;float: right;">CANCEL</a>
+			{% if Reservable == False %}
+			<br>
+			<br>
+			<br>
+			<p>Sorry that vehicle is not available between those dates</p>
+			{% endif %}
+
         </div>
 
 

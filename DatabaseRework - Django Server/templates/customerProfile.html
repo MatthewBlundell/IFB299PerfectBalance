@@ -139,7 +139,6 @@
             <ul>
               <li>Contact Number: <i>{{Number}}</i> </li>
               <li>Rental Total: <i>{{Count}}</i> </li>
-              <li>TO BE CONTINUED... </li>
             </ul>
           </div>
         </div>
@@ -148,7 +147,7 @@
 
 
 		{% if Count > 0 %}
-		{% for vehicle in Vehicles %}
+		{% for vehicle, order, cost in together %}
         <div id = "ResultWrapper">
     		<div class = "Result">
 			<div class="Picture">
@@ -162,10 +161,10 @@
 					<div class="Textbox">{{vehicle.year}}</div>
     				</div>
             <div class="BoxWrapper">
-    					<div class="Textbox">Pickup Date</div>
-    					<div class="Textbox">Return Date</div>
-    					<div class="Textbox">Price</div>
-    					<div class="Textbox">Rental Number</div>
+    					<div class="Textbox">Pick up date: {{order.pickupdate}}</div>
+    					<div class="Textbox">Return Date: {{order.returndate}}</div>
+    					<div class="Textbox">AUD ${{cost}} Dollars</div>
+    					<div class="Textbox">Order number: {{order.orderid}}</div>
     				</div>
     			</div>
     		</div>

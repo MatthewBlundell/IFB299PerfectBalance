@@ -194,10 +194,10 @@
 
                 <select name="endlocation" class="select">
                 <option value="0">Location...</option>
-                <option value="1">Airport</option>
-                <option value="2">Southbank</option>
-                <option value="3">George Street</option>
-                <option value="4">West End</option>
+                <option value="1">Coffs Harbour</option>
+                <option value="2">Darlinghurst</option>
+                <option value="3">Goulburn</option>
+                <option value="4">Melbourne</option>
                 <option value="5">Gold Coast</option>
                 <option value="6">Springwood</option>
               </select>
@@ -207,10 +207,15 @@
         <div id = "total">
             <label><b>AUD ${{Price}} per day</b></label>
         </div>
-
+		{% if session == True %}
         <div id="buttons" style="height:10px;">
             <button class="button" style="margin-left: 0;width: 100%;">Reserve</button>
         </div>
+		{% else %}
+		<div id="buttons" style="height:10px;">
+            <button class="button" style="margin-left: 0;width: 100%; opacity:0.4;" disabled>Reserve</button>
+        </div>
+		{% endif %}
 		 </form>
 	</div>
 

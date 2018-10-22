@@ -30,9 +30,6 @@ def Report(request, date, weekNum):
 # Lists to hold data for the weekly and monthly data.
 # Populated by data from the MYSQL database.
     week1counts = []
-    week2counts = []
-    week3counts = []
-    week4counts = []
     monthlength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     monthcounts = []
     year = date[0:4]
@@ -40,7 +37,6 @@ def Report(request, date, weekNum):
     day = date[6:8]
 
     ordersmonth = []
-    ordersweek = []
 
 # For loop that filters the weekly and monthly data for use in the charts
     for i in range(28):
@@ -72,14 +68,15 @@ def Report(request, date, weekNum):
         if int(weekNum) == 1:
             if i < 7:
                 week1counts.append(Order.objects.filter(pickupdate=date).count())
-        if int(weekNum) == 2:
-            if i >= 7 & i < 14:
+        elif int(weekNum) == 2:
+            if i >= 7 and i < 14:
                 week1counts.append(Order.objects.filter(pickupdate=date).count())
-        if int(weekNum) == 3:
-            if i >= 14 & i < 21:
+        elif int(weekNum) == 3:
+            if i >= 14 and i < 21:
                 week1counts.append(Order.objects.filter(pickupdate=date).count())
-        if int(weekNum) == 4:
-            if i >= 21 & i < 28:
+        elif int(weekNum) == 4:
+            if i >= 21 and i < 28:
+                print(i)
                 week1counts.append(Order.objects.filter(pickupdate=date).count())
 
 # Monthly data placed into month list.
@@ -87,8 +84,7 @@ def Report(request, date, weekNum):
         for z in Order.objects.filter(pickupdate=date).extra(
             {'carid_uint': "CAST(carid as UNSIGNED)", 'userid_uint': "CAST(userid as UNSIGNED)"}):
             ordersmonth.append(z)
-            if i < 7:
-                ordersweek.append(z)
+
 # Monthly data broken down into weekly segments.
 # This is used in the Monthly rental chart.
     week1total = sum(monthcounts[0:6])
@@ -108,6 +104,9 @@ def Report(request, date, weekNum):
     prevWeek = int(weekNum) - 1
     nextWeek = int(weekNum) + 1
     template = loader.get_template('reporting.html')
+
+
+    print(week1counts[0])
 
 # The following code is a library of all data
 # that will be utilised in the HTML code of the reporting page.

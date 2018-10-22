@@ -1,13 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from Search.models import User, Vehicle, Store
+from Search.models import User, Vehicle, Store, Order
 from django.shortcuts import get_object_or_404
 import datetime
 
 
 # Create your views here.
 def InfoCar(request, id):
-
     Check = False
 
     if request.session.has_key('Login'):
@@ -24,13 +23,16 @@ def InfoCar(request, id):
         userid = uservar.userid
         auth = uservar.authenticationlevel
 
-
-
+    #get car object
     car = get_object_or_404(Vehicle ,carid=id)
 
-
+    #get which location car is currently at
     orderlocation = Store.objects.get(storeid=str(car.storeid)).city
+
+    #calculate price
     price = car.price*0.001;
+
+    print(request.session.has_key('email'))
 
     template = loader.get_template('informationCar.html')
     context = {
@@ -49,7 +51,6 @@ def InfoCar(request, id):
         'authlevel': auth,
         'Check': Check,
         'Min': datetime.datetime.today().strftime('%Y-%m-%d'),
-
     }
     return HttpResponse(template.render(context, request))
 

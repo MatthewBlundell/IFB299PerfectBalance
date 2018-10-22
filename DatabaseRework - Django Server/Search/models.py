@@ -76,3 +76,79 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return str(self.carid)
+
+
+
+
+class test_Order(models.Model):
+    orderid = models.AutoField(db_column='orderID', primary_key=True)  # Field name made lowercase.
+    userid = models.ForeignKey('test_User', models.DO_NOTHING, db_column='userID', blank=True, null=True)  # Field name made lowercase.
+    carid = models.ForeignKey('test_Vehicle', models.DO_NOTHING, db_column='carID', blank=True, null=True)  # Field name made lowercase.
+    createdate = models.CharField(db_column='createDate', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    pickupdate = models.CharField(db_column='pickupDate', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    pickupstore = models.ForeignKey('test_Store', models.DO_NOTHING, db_column='pickupStore', blank=True, null=True, related_name = 'test_store_pickup')  # Field name made lowercase.
+    returndate = models.CharField(db_column='returnDate', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    returnstore = models.ForeignKey('test_Store', models.DO_NOTHING, db_column='returnStore', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'test_order'
+
+    def __str__(self):
+        return str(self.orderid)
+
+class test_Store(models.Model):
+    storeid = models.AutoField(db_column='storeID', primary_key=True)  # Field name made lowercase.
+    name = models.CharField(max_length=255, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    city = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        db_table = 'test_store'
+    def __str__(self):
+        return str(self.storeid)
+
+
+class test_User(models.Model):
+    userid = models.AutoField(db_column='userID', primary_key=True)  # Field name made lowercase.
+    name = models.CharField(max_length=255, blank=True, null=True)
+    phone = models.CharField(max_length=25, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    birthday = models.CharField(max_length=20, blank=True, null=True)
+    occupation = models.CharField(max_length=255, blank=True, null=True)
+    gender = models.CharField(max_length=1, blank=True, null=True)
+    username = models.CharField(max_length=255, blank=True, null=True)
+    password = models.CharField(max_length=255, blank=True, null=True)
+    authenticationlevel = models.IntegerField(db_column='authenticationLevel', blank=True, null=True)  # Field name made lowercase.
+    
+    class Meta:
+        db_table = 'test_user'
+
+    def __str__(self):
+        return str(self.userid)
+
+
+class test_Vehicle(models.Model):
+    carid = models.AutoField(db_column='carID', primary_key=True)  # Field name made lowercase.
+    storeid = models.ForeignKey(test_Store, models.DO_NOTHING, db_column='storeID', blank=True, null=True)  # Field name made lowercase.
+    carmake = models.CharField(db_column='carMake', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    model = models.CharField(max_length=255, blank=True, null=True)
+    series = models.CharField(max_length=255, blank=True, null=True)
+    year = models.IntegerField(blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
+    enginesize = models.CharField(db_column='engineSize', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    fuelsystem = models.CharField(db_column='fuelSystem', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    tankcapacity = models.CharField(db_column='tankCapacity', max_length=60, blank=True, null=True)  # Field name made lowercase.
+    carpower = models.CharField(db_column='carPower', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    seatingcapacity = models.IntegerField(db_column='seatingCapacity', blank=True, null=True)  # Field name made lowercase.
+    standardtransmission = models.CharField(db_column='standardTransmission', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    carbodytype = models.CharField(db_column='carBodyType', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    cardrivetype = models.CharField(db_column='carDriveType', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    carwheelbase = models.CharField(db_column='carWheelBase', max_length=10, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'test_vehicle'
+
+    def __str__(self):
+        return str(self.carid)

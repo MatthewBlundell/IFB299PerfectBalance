@@ -32,10 +32,23 @@ def InfoUser(request, profile):
     vehiclelist = []
     count = 0
 
+
+
+
+    orderlist = []
+    cost = []
     for z in Order.objects.filter(userid=person.userid).extra(
             {'carid_uint': "CAST(carid as UNSIGNED)"}):
+        orderlist.append(z)
         vehiclelist.append(Vehicle.objects.get(carid=z.carid_uint))
         count += 1
+
+
+    for i in vehiclelist:
+        cost.append(int(int(i.price)*0.001))
+
+    together = zip(vehiclelist, orderlist, cost)
+
 
     template = loader.get_template('CustomerProfile.html')
     context = {
@@ -43,7 +56,7 @@ def InfoUser(request, profile):
         'Number': person.phone,
         'Birthday': person.birthday,
         'Address': person.address,
-        'Vehicles': vehiclelist,
+        'together': together,
         'Count': count,
         'name': name,
         'userid': userid,
