@@ -162,7 +162,7 @@
 				{% endif %}
 
     <div class="elementcontainer">
-        <div style="text-align:center">
+        <div style="padding-top: 40px;text-align:center">
             <H4><u>Confirmation Summary</u></H4>
         </div>
 
@@ -173,12 +173,12 @@
                 <figcaption><b>{{carmake}} {{Model}}, {{Year}} {{Fuelsystem}}</b></figcaption>
             </figure>
 
-			
+
             <p><b>Features:</b>
                 <ul>
-                <li>{{Transmission}}</li>         
-                <li>Air Conditioning</li>               
-                <li>{{Seating}} Passengers</li>                   
+                <li>{{Transmission}}</li>
+                <li>Air Conditioning</li>
+                <li>{{Seating}} Passengers</li>
                 <li>Dual Airbag</li>
                 <li>Satellite Navigation</li>
                 <li>ABS</li>
@@ -187,7 +187,7 @@
                 </ul>
             </p>
 			</div>
-			
+
 			<div style="display:inline-block; vertical-align:top; margin-top:20%;">
             <p><b>Pick-Up :</b> {{DatePickUp}}</p>
             <p><b>Return  :</b> {{DateDropOff}}</p>
@@ -197,17 +197,17 @@
         </div>
 
         <div class="column2">
-            <p style="text-align: center; font-size: 25px"><u>Summary of Charges</u></p>
-		
-            <p style="font-size: 25px; margin-left:25%;"><b>Total : </b>A$ {{Price}} per Day</p>
-			<form method="POST" action='./Rent/'>
+            <p style="padding-top: 20%;text-align: center; font-size: 25px"><u>Summary of Charges</u></p>
+
+            <p style="margin-bottom: 30px;font-size: 25px; text-align: center;"><b>Total : </b>A$ {{Price}} per Day</p>
+			<form method="POST" style="float: left;display:inline-block"action='./Rent/'>
 			{% csrf_token %}
-            <button class="button">CONFIRM</button>
+            <button class="button" style="float: none;">CONFIRM</button>
 			<input type="hidden" name="pickupdate" value="{{datestart}}"></input>
 			<input type="hidden" name="returndate" value="{{dateend}}"></input>
 			<input type="hidden" name="endlocation" value="{{endlocation}}"></input>
 			</form>
-            <button class="button">CANCEL</button>
+            <button class="button" style="margin-right: 10px;float: right;">CANCEL</button>
         </div>
 
 

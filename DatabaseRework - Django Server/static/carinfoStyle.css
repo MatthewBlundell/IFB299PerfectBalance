@@ -47,7 +47,9 @@ h5{
 #total{
 	margin-top:1em;
 }
-
+.carInfo{
+  display:inline-block;
+}
 #car_features{
 	position:relative;
 	top:-4em;

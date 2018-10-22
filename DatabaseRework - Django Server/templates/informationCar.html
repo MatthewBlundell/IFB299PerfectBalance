@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type = "text/javascript" src = "{% static 'adminHeader.js' %}"></script>
 </head>
-<body>    
+<body>
     <div class = "header">
 		{% if session == False %}
         <button class = "loginbtn"><a href = ""><i class="fas fa-sign-in-alt"></i>    Login</a></button>
@@ -51,7 +51,7 @@
                     <a href = "">Lost your password?</a>
                 </div>
             </form>
-			
+
         </div>
 		{% if session == True and authlevel == 1 %}
                 <div class = "container">
@@ -162,10 +162,10 @@
 					</div>
 				</div>
 				{% endif %}
-    <div class="CarContainer"> 
-	<div style="display:inline-block; vertical-align:top; margin-left:10%; margin-right:15%;">
+    <div class="CarContainer">
+	<div style="display:inline-block; vertical-align:top; margin-left:10%; margin-top: 40px;margin-right:15%;">
 		<div id="datePU" style="display:inline-block; margin-right:3em;">
-            <form action="./Rent/" method="POST">
+            <form style="margin-top: -20px;"action="./Rent/" method="POST">
 			{% csrf_token %}
                 <label><h2>Pick-Up</h2></label><br>
                 <input class="select" name="pickupdate" min="{{Min}}" type="date"/><br><br>
@@ -179,10 +179,10 @@
 
 				<label>Location: {{Location}}</label>
         </div>
-			
+
         <div id="dateR" style="display:inline-block;">
-           
-                <label><h2>Return</h2></label><br>
+
+                <h2>Return</h2><br>
                 <input class="select" name="returndate" min="{{Min}}" type="date"/><br><br>
 
                 <select class="select">
@@ -202,36 +202,42 @@
                 <option value="6">Springwood</option>
               </select>
 
-           
+
         </div>
         <div id = "total">
             <label><b>AUD ${{Price}} per day</b></label>
         </div>
 
         <div id="buttons" style="height:10px;">
-            <button class="button">Reserve</button>
+            <button class="button" style="margin-left: 0;width: 100%;">Reserve</button>
         </div>
 		 </form>
 	</div>
-	
+
 	<div style="display:inline-block; vertical-align:top; margin-bottom: 5px">
-		<div id = "image" style="display:inline-block;">
+		<div id = "image" >
 			<img src = "..\..\static\images\Brands\{{carmake}}.png" alt="2019-audi-a7" width="350" height="250">
         </div>
-	
-        <div id="car_info" style="display:inline-block;">
-            <h4>{{carmake}}</h4>
-            <h4>{{Model}}</h4>
-            <h4>{{Year}}</h4>
-            <h4>{{Fuelsystem}}</h4>
+
+        <div class="carInfo">
+          {{carmake}} -
         </div>
-	
-	    <div id="car_features" style="margin-bottom: 10%;">
-            <h5><u>Features</u></h5>
+        <div class="carInfo">
+          {{Model}} -
+        </div>
+        <div class="carInfo">
+          {{Year}} -
+        </div>
+        <div class="carInfo">
+          {{Fuelsystem}}
+        </div>
+
+	    <div id="car_features" style="margin-top: 100px;">
+            <h5><u>Features:</u></h5>
             <ul>
-                <li>{{Transmission}}</li>         
-                <li>Air Conditioning</li>               
-                <li>{{Seating}} Passengers</li>                   
+                <li>{{Transmission}}</li>
+                <li>Air Conditioning</li>
+                <li>{{Seating}} Passengers</li>
                 <li>Dual Airbag</li>
                 <li>Satellite Navigation</li>
                 <li>ABS</li>
@@ -240,7 +246,7 @@
             </ul>
         </div>
 	</div>
-	
+
     </div>
     <div class = "footer">
         <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>

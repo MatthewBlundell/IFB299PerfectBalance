@@ -7,7 +7,7 @@
 #image{
 	margin: 0px;
 	margin-top:5%;
-    
+
 }
 
 
@@ -29,7 +29,7 @@
 	vertical-align:top;
     background-color: white;
     width: 55%;
-    height: 425px;
+    min-height: 425px;
     border: solid black 1px;
     margin-left: 100px;
 }
