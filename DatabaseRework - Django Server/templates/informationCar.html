@@ -68,7 +68,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href = "/Car_Information/15369">
+                                    <a href = "/CarPortal/">
                                         <div class = "icon">
                                             <i class="fas fa-car"></i>
                                             <i class="fas fa-car"></i>
@@ -77,7 +77,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href = "/Profile/{{userid}}">
+                                    <a href = "/ProfilePortal/">
                                         <div class = "icon">
                                             <i class="fas fa-user-circle"></i>
                                             <i class="fas fa-user-circle"></i>
@@ -104,7 +104,7 @@
                                     </a>
                                 </li>
 								<form class = "search" action="/Search/">
-									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input id = "SearchField" type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
 									<input type = "button" value = "Search" class = "close-btn">
 								</form>
                             </ol>
@@ -126,6 +126,7 @@
 									</a>
 								</li>
 								<li>
+								{% if Session == True %}
 									<a href = "/Profile/{{userid}}">
 										<div class = "icon">
 											<i class="fas fa-user-circle"></i>
@@ -133,6 +134,15 @@
 										</div>
 										<div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
 									</a>
+								{% else %}
+									<a href = "/Login_Form/">
+										<div class = "icon">
+											<i class="fas fa-user-circle"></i>
+											<i class="fas fa-user-circle"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+									</a>
+								{% endif %}
 								</li>
 								<li>
 									<a href = "/Search/">
@@ -155,9 +165,10 @@
     <div class="CarContainer"> 
 	<div style="display:inline-block; vertical-align:top; margin-left:10%; margin-right:15%;">
 		<div id="datePU" style="display:inline-block; margin-right:3em;">
-            <form>
+            <form action="./Rent/" method="POST">
+			{% csrf_token %}
                 <label><h2>Pick-Up</h2></label><br>
-                <input class="select" type="date"/><br><br>
+                <input class="select" name="pickupdate" min="{{Min}}" type="date"/><br><br>
 
                 <select class="select">
                   <option value="Time">Time</option>
@@ -166,23 +177,13 @@
                   <option value="Evening">Evening</option>
                 </select><br><br>
 
-                <select class="select">
-                <option value="0">Location...</option>
-                <option value="1">Airport</option>
-                <option value="2">Southbank</option>
-                <option value="3">George Street</option>
-                <option value="4">West End</option>
-                <option value="5">Gold Coast</option>
-                <option value="6">Springwood</option>
-              </select>
-
-            </form>
+				<label>Location: {{Location}}</label>
         </div>
 			
         <div id="dateR" style="display:inline-block;">
-            <form>
+           
                 <label><h2>Return</h2></label><br>
-                <input class="select" type="date"/><br><br>
+                <input class="select" name="returndate" min="{{Min}}" type="date"/><br><br>
 
                 <select class="select">
                   <option value="Time">Time</option>
@@ -191,7 +192,7 @@
                   <option value="Evening">Evening</option>
                 </select><br><br>
 
-                <select class="select">
+                <select name="endlocation" class="select">
                 <option value="0">Location...</option>
                 <option value="1">Airport</option>
                 <option value="2">Southbank</option>
@@ -201,21 +202,21 @@
                 <option value="6">Springwood</option>
               </select>
 
-            </form>
+           
         </div>
         <div id = "total">
-            <label>Total: <b>AUD $2100</b></label>
+            <label><b>AUD ${{Price}} per day</b></label>
         </div>
 
         <div id="buttons" style="height:10px;">
-            <button class="button">RENT</button>
-            <button class="button">SAVE</button>
+            <button class="button">Reserve</button>
         </div>
+		 </form>
 	</div>
 	
-	<div style="display:inline-block; vertical-align:top;">
+	<div style="display:inline-block; vertical-align:top; margin-bottom: 5px">
 		<div id = "image" style="display:inline-block;">
-			<img src = "{% static 'images/audi.jpg' %}" alt="2019-audi-a7" width="350" height="250">
+			<img src = "..\..\static\images\Brands\{{carmake}}.png" alt="2019-audi-a7" width="350" height="250">
         </div>
 	
         <div id="car_info" style="display:inline-block;">
@@ -225,7 +226,7 @@
             <h4>{{Fuelsystem}}</h4>
         </div>
 	
-	    <div id="car_features">
+	    <div id="car_features" style="margin-bottom: 10%;">
             <h5><u>Features</u></h5>
             <ul>
                 <li>{{Transmission}}</li>         

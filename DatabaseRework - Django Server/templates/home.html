@@ -62,7 +62,7 @@
                         <nav>
                             <ol>
                                 <li>
-                                    <a href = "#">
+                                    <a href = "">
                                         <div class = "icon">
                                             <i class="fas fa-home"></i>
                                             <i class="fas fa-home"></i>
@@ -71,7 +71,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href = "/Car_Information/15369">
+                                    <a href = "/CarPortal/">
                                         <div class = "icon">
                                             <i class="fas fa-car"></i>
                                             <i class="fas fa-car"></i>
@@ -80,7 +80,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href = "/Profile/{{userid}}">
+                                    <a href = "/ProfilePortal/">
                                         <div class = "icon">
                                             <i class="fas fa-user-circle"></i>
                                             <i class="fas fa-user-circle"></i>
@@ -107,7 +107,7 @@
                                     </a>
                                 </li>
 								<form class = "search" action="/Search/">
-									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input id = "SearchField" type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
 									<input type = "button" value = "Search" class = "close-btn">
 								</form>
                             </ol>
@@ -129,6 +129,7 @@
 									</a>
 								</li>
 								<li>
+								{% if Session == True %}
 									<a href = "/Profile/{{userid}}">
 										<div class = "icon">
 											<i class="fas fa-user-circle"></i>
@@ -136,6 +137,15 @@
 										</div>
 										<div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
 									</a>
+								{% else %}
+									<a href = "/Login_Form/">
+										<div class = "icon">
+											<i class="fas fa-user-circle"></i>
+											<i class="fas fa-user-circle"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+									</a>
+								{% endif %}
 								</li>
 								<li>
 									<a href = "/Search/">

@@ -28,13 +28,13 @@ $(function(){
             arrow.fadeIn();
             loginform.fadeIn();
             loginform.css({'z-index': '3', 'opacity': '1'});
-            disable.css({'z-index': '2', 'opacity': '0.6'});           
+            disable.css({'z-index': '2', 'opacity': '0'});           
             activestatus = true;
         }
         else{
             arrow.fadeOut();
             loginform.fadeOut();
-            loginform.css({'z-index': '0', 'opacity': '1'});
+            loginform.css({'z-index': '1', 'opacity': '1'});
             disable.css({'z-index': '0', 'opacity': '0'}); 
             activestatus = false;
         }

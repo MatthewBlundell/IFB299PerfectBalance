@@ -69,14 +69,18 @@ def Report(request, date, weekNum):
         date = year + month + day
 
 # Weekly data is placed into the week lists.
-        if i < 7:
-            week1counts.append(Order.objects.filter(pickupdate=date).count())
-        if i >= 7 & i < 14:
-            week2counts.append(Order.objects.filter(pickupdate=date).count())
-        if i >= 14 & i < 21:
-            week3counts.append(Order.objects.filter(pickupdate=date).count())
-        if i >= 21 & i < 28:
-            week4counts.append(Order.objects.filter(pickupdate=date).count())
+        if int(weekNum) == 1:
+            if i < 7:
+                week1counts.append(Order.objects.filter(pickupdate=date).count())
+        if int(weekNum) == 2:
+            if i >= 7 & i < 14:
+                week1counts.append(Order.objects.filter(pickupdate=date).count())
+        if int(weekNum) == 3:
+            if i >= 14 & i < 21:
+                week1counts.append(Order.objects.filter(pickupdate=date).count())
+        if int(weekNum) == 4:
+            if i >= 21 & i < 28:
+                week1counts.append(Order.objects.filter(pickupdate=date).count())
 
 # Monthly data placed into month list.
         monthcounts.append(Order.objects.filter(pickupdate=date).count())
@@ -115,13 +119,6 @@ def Report(request, date, weekNum):
         'day5': week1counts[4],
         'day6': week1counts[5],
         'day7': week1counts[6],
-        'day8': week4counts[0],
-        'day9': week4counts[1],
-        'day10': week4counts[2],
-        'day11': week4counts[3],
-        'day12': week4counts[4],
-        'day13': week4counts[5],
-        'day14': week4counts[6],
         'week1total': week1total,
         'week2total': week2total,
         'week3total': week3total,

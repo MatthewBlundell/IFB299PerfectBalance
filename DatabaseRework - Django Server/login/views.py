@@ -1,6 +1,5 @@
-from django.shortcuts import render
 from Search.models import User
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 
 
 def Login(request):

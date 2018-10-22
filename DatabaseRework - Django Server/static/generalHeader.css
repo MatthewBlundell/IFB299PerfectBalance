@@ -327,8 +327,11 @@ ol li a:hover .name .navname{
     height: 80px;
     flex-shrink: 0;
     text-align: center;
-
+	position:fixed;
+	bottom:0;
+	width:100%;
 }
+
 
 .footer h3{
     color: white;

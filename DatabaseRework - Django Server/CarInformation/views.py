@@ -1,7 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from Search.models import User, Vehicle
+from Search.models import User, Vehicle, Store
 from django.shortcuts import get_object_or_404
+import datetime
+
 
 # Create your views here.
 def InfoCar(request, id):
@@ -27,6 +29,8 @@ def InfoCar(request, id):
     car = get_object_or_404(Vehicle ,carid=id)
 
 
+    orderlocation = Store.objects.get(storeid=str(car.storeid)).city
+    price = car.price*0.001;
 
     template = loader.get_template('informationCar.html')
     context = {
@@ -38,10 +42,13 @@ def InfoCar(request, id):
         'Seating': car.seatingcapacity,
         'Carpower': car.carpower,
         'session': request.session.has_key('email'),
+        'Location': orderlocation,
+        'Price': price,
         'name': name,
         'userid': userid,
         'authlevel': auth,
-        'Check': Check
+        'Check': Check,
+        'Min': datetime.datetime.today().strftime('%Y-%m-%d'),
 
     }
     return HttpResponse(template.render(context, request))

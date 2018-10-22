@@ -266,6 +266,11 @@ ol li a:hover .name .navname{
     padding: 20px 30px;
 }
 
+
+#SearchField{
+	width:40%;
+}
+
 .input{
     width: 250px;
     border: 3px solid black;
@@ -281,18 +286,21 @@ ol li a:hover .name .navname{
     color: #FF3B3F;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif; 
+	font-size:9pt;	
 }
 
 ::-moz-input-placeholder{
     color: #FF3B3F;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif; 
+	font-size:9pt;	
 }
 
 ::-ms-input-placeholder{
     color: #FF3B3F;
     text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Montserrat', sans-serif;
+	font-size:9pt;		
 }
 
 .close-btn{
@@ -326,7 +334,9 @@ ol li a:hover .name .navname{
     height: 80px;
     flex-shrink: 0;
     text-align: center;
-
+	position:fixed;
+	bottom:0;
+	width:100%;
 }
 
 .footer h3{

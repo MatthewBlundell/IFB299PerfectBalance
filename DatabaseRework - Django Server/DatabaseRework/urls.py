@@ -27,4 +27,8 @@ urlpatterns = [
     re_path(r'^[Rr][Ee][Gg][Ii][Ss][Tt][Ee][Rr]/', include('LoginRegister.urls')),
     re_path(r'^[Ll][Oo][Gg][Ii][Nn]/', include("login.urls")),
     re_path(r'[Ll][Oo][Gg][Oo][Uu][Tt]/', include('Logout.urls')),
+    re_path(r'[Cc][Aa][Rr][_][Rr][Ee][Pp][Oo][Rr][Tt]/', include('CarReport.urls')),
+    re_path(r'[Ll][Oo][Gg][Ii][Nn][_][Ff][Oo][Rr][Mm]/', include('LoginPage.urls')),
+    re_path(r'[Cc][Aa][Rr][Pp][Oo][Rr][Tt][Aa][Ll]/', include('CarPortal.urls')),
+    re_path(r'[Pp][Rr][Oo][Ff][Ii][Ll][Ee][Pp][Oo][Rr][Tt][Aa][Ll]/', include('ProfilePortal.urls')),
 ]
