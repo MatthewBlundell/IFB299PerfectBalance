@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'carPortalStyle.css' %}">
 </head>
-<body>    
+<body>
     <div class = "header">
 		<div>
 		<div style="float:right; vertical-align:center; margin-right:3em; margin-top:0.5em;"><b>{{name}}</b></div>
@@ -96,18 +96,18 @@
 	  {% for customer in Customers %}
 			<div class = "Result">
 				<div class="TextWrapper">
-						<div class="Textbox"><a href="../Profile/{{customer.userid}}">{{customer.userid}}</a></div>
+						<div class="Textbox" style="width:5%;"><a href="../Profile/{{customer.userid}}">{{customer.userid}}</a></div>
 						{% if customer.username == "" %}
 						<div class="Textbox">Not Registered</div>
 						{% else %}
 						<div class="Textbox">{{customer.username}}</div>
 						{% endif %}
 						<div class="Textbox">{{customer.name}}</div>
-						<div class="Textbox">{{customer.birthday}}</div>
-						<div class="Textbox">{{customer.address}}</div>
-						<div class="Textbox">{{customer.phone}}</div>
-						<div class="Textbox">{{customer.occupation}}</div>
-						<div class="Textbox">{{customer.gender}}</div>
+						<div class="Textbox" style="width:9%;">{{customer.birthday}}</div>
+						<div class="Textbox" style="width:16%;">{{customer.address}}</div>
+						<div class="Textbox" style="width:16%;">{{customer.phone}}</div>
+						<div class="Textbox" style="width:8%;">{{customer.occupation}}</div>
+						<div class="Textbox" style="width:5%;">{{customer.gender}}</div>
 				</div>
 			</div>
 		{% endfor %}

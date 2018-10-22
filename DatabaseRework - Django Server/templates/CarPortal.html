@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'carPortalStyle.css' %}">
 </head>
-<body>    
+<body>
     <div class = "header">
 		<div>
 		<div style="float:right; vertical-align:center; margin-right:3em; margin-top:0.5em;"><b>{{name}}</b></div>
@@ -98,14 +98,14 @@
 		{% for vehicle in Vehicles %}
 			<div class = "Result">
 				<div class="TextWrapper">
-						<div class="Textbox"><a href="../../Car_Report/{{vehicle.carid}}">{{vehicle.carid}}</a></div>
-						<div class="Textbox">{{vehicle.carmake}}</div>
-						<div class="Textbox">{{vehicle.model}}</div>
-						<div class="Textbox">{{vehicle.year}}</div>
-						<div class="Textbox">{{vehicle.series}}</div>
-						<div class="Textbox">{{vehicle.price}}</div>
-						<div class="Textbox">{{vehicle.fuelsystem}}</div>
-						<div class="Textbox">{{vehicle.seatingcapacity}}</div>
+						<div class="Textbox" style="width:5%;"><a href="../../Car_Report/{{vehicle.carid}}">{{vehicle.carid}}</a></div>
+						<div class="Textbox" style="width:15%;">{{vehicle.carmake}}</div>
+						<div class="Textbox" style="width:12%;">{{vehicle.model}}</div>
+						<div class="Textbox" style="width:5%;">{{vehicle.year}}</div>
+						<div class="Textbox" style="width:12%;">{{vehicle.series}}</div>
+						<div class="Textbox" style="width:5%;">${{vehicle.price}}</div>
+						<div class="Textbox" style="width:18%;">{{vehicle.fuelsystem}}</div>
+						<div class="Textbox" style="width:8%;">{{vehicle.seatingcapacity}} Seats</div>
 				</div>
 			</div>
 			{% endfor %}
