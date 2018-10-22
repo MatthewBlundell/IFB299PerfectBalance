@@ -68,7 +68,7 @@ button a{
 .loginbtn{
     outline: none;
     border: none;
-    border-radius: 5px;    
+    border-radius: 5px;
 }
 
 .signupbtn{
@@ -285,22 +285,22 @@ ol li a:hover .name .navname{
 ::-webkit-input-placeholder{
     color: #FF3B3F;
     text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif; 
-	font-size:9pt;	
+    font-family: 'Montserrat', sans-serif;
+	font-size:9pt;
 }
 
 ::-moz-input-placeholder{
     color: #FF3B3F;
     text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif; 
-	font-size:9pt;	
+    font-family: 'Montserrat', sans-serif;
+	font-size:9pt;
 }
 
 ::-ms-input-placeholder{
     color: #FF3B3F;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
-	font-size:9pt;		
+	font-size:9pt;
 }
 
 .close-btn{
@@ -345,4 +345,3 @@ ol li a:hover .name .navname{
     margin-top: 0;
     margin-bottom: 0;
 }
-

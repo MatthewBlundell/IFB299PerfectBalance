@@ -14,7 +14,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type = "text/javascript" src = "{% static 'adminHeader.js' %}"></script>
 </head>
-<body>    
+<body>
     <div class = "header">
 		<div style="float:right; vertical-align:center; margin-right:3em; margin-top:0.5em;"><b>{{name}}</b></div>
         <button style = "style:inline-block;"class = "signupbtn"><a href="/Logout/"><i class="fas fa-sign-in-alt"></i>    Logout</a></button>
@@ -26,7 +26,7 @@
                         <nav>
                             <ol>
                                 <li>
-                                    <a href = "../../">
+                                    <a href = "../../../">
                                         <div class = "icon">
                                             <i class="fas fa-home"></i>
                                             <i class="fas fa-home"></i>
@@ -78,10 +78,10 @@
                         </nav>
                     </div>
                 </div>
-				
-				
+
+
 		<form action="./Redirect/">
-          <select name="Month">
+          <select name="Month" style="position:relative; left:10%;">
               <option value="-">MONTH</option>
               <option value="01">January</option>
               <option value="02">February</option>
@@ -97,24 +97,34 @@
               <option value="12">December</option>
           </select>
 
-          <select name="Year">
-              <option value="-">YEAR</option>             
-              <option value="2005">2005</option>            
+          <select name="Year" style="position:relative; left:10%;">
+              <option value="-">YEAR</option>
+              <option value="2005">2005</option>
               <option value="2006">2006</option>
-              <option value="2007">2007</option>             
+              <option value="2007">2007</option>
           </select>
+          <br>
 
-          <input type="submit" value="Submit"/>
-		  
-		 </form> 
-		 
+            <input type="submit" value="Submit" class = "weekbtn" style="position:relative; left:11%;">
+            <br>
+		 </form>
+
+		<form action="./Redirect/">
+
+      <input type = "week1" value = "Week 1" class = "weekbtn">
+      <input type = "week2" value = "Week 2" class = "weekbtn">
+      <input type = "week3" value = "Week 3" class = "weekbtn">
+      <input type = "week4" value = "Week 4" class = "weekbtn">
+
+    </form>
+
     <div class="GraphContainer" style="margin-bottom:3%;">
 
     <div class="row">
         <div class="GraphWrapper">
         <div class="column1" style="height:400px">
             <div id = "heading">
-                <h3>Weekly Rentals</h3> 
+                <h3>Weekly Rentals</h3>
              </div>
 			<canvas id="Weekly" style="height:100%"></canvas>
 			<script>
@@ -156,12 +166,12 @@
     }
 });
 			</script>
-			
-			
-        </div> 
+
+
+        </div>
         <div class="column1" style="height:400px;">
             <div id = "heading"">
-                <h3>Monthly Rentals</h3> 
+                <h3>Monthly Rentals</h3>
              </div>
             			<canvas id="Monthly" style="height:100%"></canvas>
 			<script>
@@ -203,16 +213,16 @@
     }
 });
 			</script>
-    
-        </div> 
+
+        </div>
     </div>
-    </div> 
+    </div>
     <div class="row">
         <div class="column2" style="height:400px;">
             <div id = "heading">
                <h3>Current Rentals</h3>
             </div>
-            
+
          <table id="Rented" style="width:100%">
             <tr>
                 <th>VehicleID</th>
@@ -232,14 +242,14 @@
 			{% endfor %}
 
         </table>
-        </div> 
+        </div>
     </div>
 	</div>
 
-    
+
     <div class = "footer">
         <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
     </div>
-   
+
 </body>
 </html>

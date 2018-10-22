@@ -149,7 +149,13 @@ def ReportRedirect(request):
 def Redirect(request, date, weekNum):
     year = request.GET.get('Year')
     month = request.GET.get('Month')
-    if(year == '-' or month == '-'):
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    week1 = request.GET.get('week1')
 
-    return redirect('../../../../Reporting/' + year+month+'01/1')
+    if week1 == 'Week 1':
+        return redirect('../1')
+
+    else:
+        if(year == '-' or month == '-'):
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+        return redirect('../../../../Reporting/' + year+month+'01/1')

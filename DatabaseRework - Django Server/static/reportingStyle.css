@@ -44,7 +44,7 @@ ul#features_list li{
     overflow-y:scroll;
 }
 
-.GraphWrapper { 
+.GraphWrapper {
     width: 1280px;
     margin:100px auto ;
  }
@@ -88,4 +88,35 @@ table#Rented tr:nth-child(odd) {
 table#Rented th {
     color: white;
     background-color: black;
+}
+
+.weekbtn{
+  cursor: pointer;
+  width: 80px;
+  height: 55px;
+  background: #F3F3F3;
+  color: #646464;
+  border: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: #FF4600;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+
+}
+.weekbtn:hover{
+    cursor: pointer;
+    width: 80px;
+    height: 55px;
+    background: #F3F3F3;
+    color: #646464;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #FF4600;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
 }
