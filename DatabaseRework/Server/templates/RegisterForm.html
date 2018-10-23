@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFB299 Group 4 Car Rental App</title>
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'signupStyle.css' %}">
+	<link rel = "stylesheet" type = "text/css" href = "{% static 'generalHeader.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<script type = "text/javascript" src = "{% static 'adminHeader.js' %}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body background = "{% static 'images/carbg1.jpg' %}">    
+    <div class = "header">
+        <button class = "loginbtn"><a href = ""><i class="fas fa-sign-in-alt"></i>    Login</a></button>
+        <h1 class = "compname"><span class = "logotitle">C</span>ar <span class = "logotitle">R</span>ental <span class = "logotitle">C</span>ompany</h1>
+        <div class = "arrow"></div>
+    </div>
+    <div class = "login-form">
+            <form action="/Login/" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+                <div>
+                    <label>Email:</label><br>
+                    <input class = "loginLabel" type="text" name="email" placeholder = "Enter Email" required>
+                </div>
+                <div>
+                    <label>Password:</label><br>
+                    <input class = "loginLabel" type="password" name="password" placeholder = "Enter Password" required>
+                </div>
+				<input type="hidden" name="action" value="login">
+                <div>
+                    <button type = "submit" class = "submit">Login</button>
+                </div>
+				{% if Check == True %}
+				<p style="color:#FF3B3F">Incorrect Login Details</p>
+				{% endif %}
+                <div>
+                    <a href = "">Lost your password?</a>
+                </div>
+            </form>
+			
+        </div>
+				<div class = "container">
+					<div id = "sidebar">
+						<nav>
+							<ol>
+								<li>
+									<a href = "../../">
+										<div class = "icon">
+											<i class="fas fa-home"></i>
+											<i class="fas fa-home"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+									</a>
+								</li>
+								<li>
+									<a href = "/Login_Form/">
+										<div class = "icon">
+											<i class="fas fa-user-circle"></i>
+											<i class="fas fa-user-circle"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+									</a>
+								</li>
+								<li>
+									<a href = "/Search/">
+										<div class = "icon">
+											<i class="fas fa-list"></i>
+											<i class="fas fa-list"></i>
+										</div>
+										<div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+									</a>
+								</li>
+								<form class = "search" action="/Search/">
+									<input type = "text" name="SearchField" class = "input" placeholder = "Type Search here">
+									<input type = "button" value = "Search" class = "close-btn">
+								</form>
+							</ol>
+						</nav>
+					</div>
+				</div>
+		<div>
+          <div>
+            <form class = "loginR" method="post" action="../Register/">
+				{% csrf_token %}
+                <h3 style="color:white">Register</h3>
+				{% if NameVerify == True %}
+                <label>Name:</label><input  class = "loginLabel"type="text" placeholder="Enter Name" name="Name" required></br>
+				{% else %}
+				<label>Name: <b style="display:inline-block; color: red;">Please enter a valid Name</b></label><input  class = "loginLabel"type="text" placeholder="Enter Name" name="Name" required></br>
+				{% endif %}
+				{% if NumberVerify == True %}
+                <label>Phone Number:</label><input  class = "loginLabel"type="tel" placeholder="Enter Phone Number " name="Number" required></br>
+				{% else %}
+				<label>Phone Number: <b style="display:inline-block; color: red;">Please enter a valid Phone Number</b></label><input  class = "loginLabel"type="tel" placeholder="Enter Phone Number " name="Number" required></br>
+				{% endif %}
+                <label>Address:</label><input class = "loginLabel" type="text" placeholder="Enter Address" name="Address" required></br>
+                <label>Date of Birth:</label><input class = "loginLabel" type="date" placeholder="--/--/----" name="DOB" required></br>
+                <label>Occupation:</label><input class = "loginLabel" type="text" placeholder="Enter your occupation here" name="Occupation" required></br>
+                <label>Gender:</label><br><select name = "Gender"><option value = "male">Male</option><option value = "female">Female</option></select><br>
+                {% if EmailVerify == True %}
+				<label>Email:</label><input class = "loginLabel" type="text" placeholder="Enter a Email Here" name="Email" required></br>
+				{% else %}
+				<label>Email: <b style="display:inline-block; color: red;">Please enter a valid Email Address</b></label><input class = "loginLabel" type="text" placeholder="Enter a Email Here" name="Email" required></br>
+				{% endif %}
+				{% if PasswordVerify == True %}
+                <label>Password:</label><input class = "loginLabel" type="password" placeholder="Enter a Password Here" name="Password" required></br>
+				{% else %}
+				<label>Password: <b style="display:inline-block; color: red;">Please enter a Password longer than 8 characters</b></label><input class = "loginLabel" type="password" placeholder="Enter a Password Here" name="Password" required></br>
+				{% endif %}
+				{% if PasswordReVerify == True %}
+                <label>Rewrite Password:</label><input class = "loginLabel" type="password" placeholder="Re-enter password" name="PasswordRe" required></br>
+				{% else %}
+				<label>Rewrite Password: <b style="display:inline-block; color: red;">Password is not the same</b></label><input class = "loginLabel" type="password" placeholder="Re-enter password" name="PasswordRe" required></br>
+				{% endif %}
+                <button class = "regbtn">Register</button>
+            </form>
+          </div>
+        </div>
+
+    <div class = "footer">
+        <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
+    </div>
+    
+
+</body>
+</html>
+
+{% if Check == True %}
+<script>
+$(BadLogin());
+</script>
+{% endif %}

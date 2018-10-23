@@ -1,0 +1,69 @@
+.elementcontainer{
+    width: 100%;
+	height:100%;
+	margin-bottom:10%;
+}
+
+#image{
+	margin: 0px;
+	margin-top:5%;
+
+}
+
+
+
+.button{
+	background-color: #2F3640;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.column1 {
+    display: inline-block;
+	vertical-align:top;
+    background-color: white;
+    width: 55%;
+    min-height: 425px;
+    border: solid black 1px;
+    margin-left: 100px;
+}
+
+.column2{
+    display: inline-block;
+	vertical-align:top;
+    background-color: white;
+    width: 25%;
+    height: 425px;
+    border: solid black 1px;
+    margin-right: 100px
+}
+
+p{
+    margin: 10px;
+	font-size: 18px;
+}
+
+h4{
+	font-weight: 400;
+	font-size: 30px;
+}
+
+h6{
+
+    font-size: 18px;
+    margin: 0px;
+}
+
+.column1 ul{
+	margin: 0px 0px 0px 0px;
+}
+
+.column1 li{
+	margin: 0px 0px 0px 0px;
+}

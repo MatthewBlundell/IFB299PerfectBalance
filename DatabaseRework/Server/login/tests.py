@@ -1,6 +1,5 @@
 from django.test import TestCase
 from Search.models import User
-from django.test import Client
 # Create your tests here.
 
 class LoginTests(TestCase):

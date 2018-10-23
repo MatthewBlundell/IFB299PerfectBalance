@@ -1,0 +1,29 @@
+#slider{
+    width: 100%;
+    height: 900px;
+    overflow: hidden;
+    margin: auto;
+    padding-top: 0%;
+    border-radius: 2%;
+}
+
+#slider .slides{
+    display: block;
+    width: 13000px;
+    height: 900px;
+    margin: 0;
+    padding: 0;
+    border-radius: 2%;
+}
+
+.slides img{
+    width: 100%;
+    height: 900px;
+}
+
+#slider .slide{
+    float: left;
+    list-style-type: none;
+    width: 1750px;
+    height: 900px;
+}

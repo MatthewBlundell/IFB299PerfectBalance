@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFB299 Group 4 Car Rental App</title>
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'history.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+<body>    
+    <div class = "header">
+		<div>
+		<div style="float:right; vertical-align:center; margin-right:3em; margin-top:0.5em;"><b>{{name}}</b></div>
+        <button style = "style:inline-block;"class = "signupbtn"><a href="/Logout/"><i class="fas fa-sign-in-alt"></i>    Logout</a></button>
+		</div>
+        <h1 class = "compname"><span class = "logotitle">C</span>ar <span class = "logotitle">R</span>ental <span class = "logotitle">C</span>ompany</h1>
+        <div class = "arrow"></div>
+    </div>
+    <div class = "wrapper"></div>
+                 <div class = "container">
+                    <div id = "sidebar">
+                        <nav>
+                            <ol>
+                                <li>
+                                    <a href = "../../">
+                                        <div class = "icon">
+                                            <i class="fas fa-home"></i>
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Home">Home</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/CarPortal/">
+                                        <div class = "icon">
+                                            <i class="fas fa-car"></i>
+                                            <i class="fas fa-car"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Car Information">Car Information</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/ProfilePortal/">
+                                        <div class = "icon">
+                                            <i class="fas fa-user-circle"></i>
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Customer Profile">Customer Profile</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Reporting/">
+                                        <div class = "icon">
+                                            <i class="fas fa-file-invoice"></i>
+                                            <i class="fas fa-file-invoice"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Reporting">Reporting</span></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href = "/Search/">
+                                        <div class = "icon">
+                                            <i class="fas fa-list"></i>
+                                            <i class="fas fa-list"></i>
+                                        </div>
+                                        <div class = "name"><span class ="navname" data-text = "Search Results">Search Results</span></div>
+                                    </a>
+                                </li>
+								<form class = "search" action="/Search/">
+									<input id = "SearchField" type = "text" name="SearchField" class = "input" placeholder = "Type Search here"></input>
+									<input type = "button" value = "Search" class = "close-btn"></input>
+								</form>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+					<div id = "userProfile">
+					<img class="Picture" src="..\..\static\images\Brands\{{Make}}.png"></img>  
+						<span class = "leftProfile">
+							<ul>
+								<li>Car: <i>{{carid}}</i></li>
+								<li>Make: <i>{{Make}}</i></li>
+								<li>Model: <i>{{Model}}</i> </li>
+								<li>Year: <i>{{Year}}</i> </li>
+							</ul>
+						</span>
+						<span class = "rightProfile">
+							<ul>
+								<li>Series: <i>{{Series}}</i> </li>
+								<li>Price: <i>{{Price}}</i> </li>
+								<li>Fuel System: <i>{{Fuel}}</i> </li>
+								<li>Seating: <i>{{Seating}}</i> </li>
+								
+							</ul>
+						</span>
+						<a href="../../Car_Information/{{carid}}" id="ButtonCar"><div id="ButtonCarText">View Car</div></a>                         
+					</div>
+					<div class = "tableContainer">
+						<div class = "responsiveTable">
+							<table>
+								<thead>
+									<tr>
+										<th>Customer Name</th>
+										<th>Date Rented</th>
+										<th>Date Returned</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for Order, Person in Mix %}
+									<tr>
+										<td>{{Person.name}}</td>
+										<td><span class = "dates">{{Order.pickupdate}}</span></td>
+										<td><span class = "dates">{{Order.returndate}}</span></td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>                        
+					</div> 
+            
+                <div class = "footer">
+                    <h3>© Copyright IFB299 Group 4 Car Rental Project 2018 Semester 2</h3>
+                </div>
+    
+    
+   
+   <script type = "text/javascript" src = "{% static 'adminHeader.js' %}"></script>
+</body>
+</html>
